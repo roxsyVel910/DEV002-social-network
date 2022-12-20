@@ -72,11 +72,12 @@ const authFirebase = createUserWithEmailAndPassword(auth, emailRegister.value, p
             messagePassword.innerHTML = "la contrasena debe tener por lo menos 6 caracteres"
         }
     })
-    })
+    });
 
 
-    passwordConfirm.addEventListener("keydown", ()=> {
+    buttonRegister.addEventListener("click", ()=> {
         if( passwordConfirm.value != passwordRegister.value){
             messagePasswordConfirm.innerHTML = "la contrasena no es igual"
         }
-    })
+    });
+    
