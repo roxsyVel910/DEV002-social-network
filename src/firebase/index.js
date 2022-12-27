@@ -4,7 +4,6 @@ import { initializeApp } from "https://www.gstatic.com/firebasejs/9.15.0/firebas
 // https://firebase.google.com/docs/web/setup#available-libraries
 // Autentificacion
 import {getAuth} from "https://www.gstatic.com/firebasejs/9.15.0/firebase-auth.js"
-import {createUserWithEmailAndPassword} from "https://www.gstatic.com/firebasejs/9.15.0/firebase-auth.js"
 
 // Your web app's Firebase configuration
 // For Firebase JS SDK v7.20.0 and later, measurementId is optional

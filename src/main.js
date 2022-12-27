@@ -1,10 +1,12 @@
-import { register } from "./templates/Register.js";
-const main = document.querySelector('.main');
+import { register } from "./templates/viewRegister.js";
+
+const main = document.querySelector('#main');
 
 const routes = {
-    '/': register,
+    '/': register
 }
+console.log("ubicacion",window.location.pathname)
 const prints = routes[window.location.pathname];
+
 main.appendChild(prints());
 
-console.log("resiter", register);

@@ -1,13 +1,11 @@
-const nameRegister = document.querySelector("#nameRegister");
-const emailRegister = document.querySelector("#emailRegister");
-const passwordRegister = document.querySelector("#passwordRegister");
-const passwordConfirm = document.querySelector("#passwordConfirm");
-const buttonRegister = document.querySelector("#register");
-const formRegister = document.querySelector("#formRegister");
-const messageEmail = document.querySelector("#messageEmail");
-const messagePassword = document.querySelector("#messagePassword");
-const anotherMessageEmail = document.querySelector("#anotherMessageEmail");
-const messagePasswordConfirm = document.querySelector("#messagePasswordConfirm");
+import { register } from "../templates/viewRegister.js";
+import { auth } from "../firebase/index.js";
+import {createUserWithEmailAndPassword} from "https://www.gstatic.com/firebasejs/9.15.0/firebase-auth.js"
+
+
+
+
+
 
 formRegister.addEventListener('submit', (e) => {
     e.preventDefault();
