@@ -1,6 +1,6 @@
 import { register } from "./templates/viewRegister.js";
 
-const main = document.querySelector('#main');
+const view = document.querySelector('#view');
 
 const routes = {
     '/': register
@@ -8,5 +8,5 @@ const routes = {
 console.log("ubicacion",window.location.pathname)
 const prints = routes[window.location.pathname];
 
-main.appendChild(prints());
+view.appendChild(prints());
 
