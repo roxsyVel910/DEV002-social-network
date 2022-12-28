@@ -4,7 +4,7 @@ import {createUserWithEmailAndPassword} from "https://www.gstatic.com/firebasejs
 
 export const register = () => {
     const containerRegister = document.createElement('div');
-  
+    containerRegister.classList.add('container');
   
 
     const view = ` 
@@ -20,15 +20,15 @@ export const register = () => {
         <h2>Bienvenido(a)</h2>
         <h3>REGISTRATE</h3>
         <form action="" id="formRegister">
-            <input type="text" id="nameRegister" placeholder="Nombres y Apellidos" pattern="[a-z]">
+            <input type="text" id="nameRegister" placeholder="Nombres y Apellidos">
             <div id="messageName"></div>
             <input type="text" id="emailRegister" placeholder="Correo">
             <div id="messageEmail"></div>
-            <input type="password" id="passwordRegister" placeholder="contrasena" autocomplete = "off">
+            <input type="password" id="passwordRegister" placeholder="Contraseña" autocomplete = "off">
             <div id="messagePassword"></div>
-            <input type="password" id="passwordConfirm" placeholder="Digite nuevamente su contrasena">
+            <input type="password" id="passwordConfirm" placeholder="Confirme su contraseña">
             <div id="messagePasswordConfirm"></div>
-            <label><input type="checkbox" id="conditions" required> Acepto los Terminos, Condiciones y Politica de privacidad. </label>
+            <label><input type="checkbox" id="conditions" required><span> Acepto los </span> Terminos, Condiciones y Politica de privacidad. </label>
             <button type="submit" id="register">REGISTRARSE</button>
         </form>
         <p class="question" >¿Ya tienes una cuenta?
@@ -66,29 +66,29 @@ export const register = () => {
        // identificardor unico para el error
        console.log(error.code)
        
-      
-       if (emailUser === ''){
-        messageEmail.innerHTML = "ingresa un correo"
-        }
         if(error.code === "auth/invalid-email"){
            messageEmail.innerHTML = "correo invalido"
        } else if (error.code === "auth/email-already-in-use"){
            messageEmail.innerHTML = "el correo ya fue utilizado"
        } else if (error.code === "auth/weak-password"){
            messagePassword.innerHTML = "la contrasena debe tener por lo menos 6 caracteres"
+       } else if (error.code){
+            alert('algo salio mal')
        }
+       
    })
    });
 
    buttonRegister.addEventListener("click", ()=> {
     if( passwordConfirm.value != passwordRegister.value){
-        messagePasswordConfirm.innerHTML = "la contrasena no es igual"
+        messagePasswordConfirm.innerHTML = "la contraseña no es igual"
+    } else if (nameRegister.value === '')  {
+        messageName.innerHTML = 'Debe ingresar su nombre';
     } else if (passwordConfirm.value === passwordRegister.value){
         messagePasswordConfirm.innerHTML = ""
-    
-    } else if (nameUser === '')  {
-         messageName.innerHTML = ' Debe ingresar su nombre';
     } 
+    else if ( nameRegister.value ==='string' )
+    messageName.innerHTML = ''
     });
     
 
@@ -96,4 +96,6 @@ export const register = () => {
   
  }
  
-
+//  else if (emailRegister === ''){
+//     messageEmail.innerHTML = "ingresa un correo"
+// }
