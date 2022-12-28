@@ -4,16 +4,16 @@ import {createUserWithEmailAndPassword} from "https://www.gstatic.com/firebasejs
 
 export const register = () => {
     const containerRegister = document.createElement('div');
-    containerRegister.classList.add('container');
+    containerRegister.classList.add('containerRegister');
   
 
     const view = ` 
     <div class="contentHome">
-        <img class="imghome" src="../img/5482829.jpg" alt="imagen de portada">
+        <img class="imghome" src="../img/5482829.jpg" alt="imagen de portada">  
         <p>DoggoS es una app para duenos de perros, en el que podras encontrar y compartir recomendaciones sobre el cuidado de
         tus engreidos. Te invitamos a unirte y ser parte de esta gran comunidad doglover.
         ¿Qué esperas? ¡No te pierdas más novedades!</p>
-    </div>
+    </div> 
     <div class="sectionForm">
         <img src="./img/perro.png" alt="imagen de perrito del logo">
         <h1>DoggoS</h1>
@@ -78,6 +78,12 @@ export const register = () => {
        
    })
    });
+   
+   nameRegister.addEventListener("input", () => {
+    if (nameRegister.value !== "") {
+      messageName.innerHTML = "";
+    }
+    });
 
    buttonRegister.addEventListener("click", ()=> {
     if( passwordConfirm.value != passwordRegister.value){
@@ -87,14 +93,12 @@ export const register = () => {
     } else if (passwordConfirm.value === passwordRegister.value){
         messagePasswordConfirm.innerHTML = ""
     } 
-    else if ( nameRegister.value ==='string' )
-    messageName.innerHTML = ''
     });
     
 
   return containerRegister;
   
- }
+}
  
 //  else if (emailRegister === ''){
 //     messageEmail.innerHTML = "ingresa un correo"
