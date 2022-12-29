@@ -18,19 +18,18 @@
     /* display: flex; */
     /* flex-direction: column; */
     /* align-items: center; */
-    /* width: 100 vw;
-    height: 100 vw; */
+    /* width: 100 vw;*/
     border: 2px solid red;
 }
 
-.containerRegister{
+.containerRegister {
     display: flex;
     /* flex-direction: row; */
     /* justify-content: space-evenly; */
     align-items: center;
     /* margin: 2% auto; */
-    /* width: 1800px;
-    height: 900px; */
+    /* width: 1800px; */
+    min-height: 90vh; 
     border: 2px solid blue;
 
 }
@@ -82,32 +81,93 @@
     width: 240px; 
     height: 32px; 
     margin: 8px;
+    text-align: center;
   }
   .sectionForm input::placeholder {
     color: #425A9A; 
     text-align: center;
   }
- 
-.messageName,
-.messageEmail,
-.messagePassword,
-.messagePasswordConfirm {
-  color: #FBCFDC;
-  font-weight: 600;
-}
-
-  .sectionForm #register{
-  border-radius: .25vw;
-  color:var(--white);
-  background-color: var(--pink);
-  
-    
+  .sectionForm input:hover {
+    background-color: #a4bacf;
+   
+    transition: background-color 0.5s ease-in-out, border-color 0.5s ease-in-out;
   }
-#conditions:required {
+
+  #messageName,
+  #messageEmail,
+  #messagePassword,
+  #messagePasswordConfirm {
+    color: #FBCFDC;
+    font-weight: 600;
+  }
+
+  #register {
+    display: block;
+    margin: 0 auto;   
+    border-radius: 15px;
+    color:var(--white);
+    background-color: var(--pink);
+    width: 127px;
+    height: 43px;
+    border:none;
+    font-weight: 600;
+  }
+
+  #register:hover {
+    /* Modificar el estilo del botón cuando el mouse esté sobre él */
+    background-color: #ddb3c4; /* Color rosa */
+  }
+
+  #conditions:required {
     border: 1px solid #FBCFDC;
     color: #425A9A;
     font-family: 'Poppins', sans-serif;
-}
+    width: 15px;
+    vertical-align: middle; 
+    font-size: 16px;
+    font-weight: bold
+
+  }
+
+  #conditions + span {
+    font-size: 16px; /* reducir el tamaño del texto */
+    display: inline-block; /* hacer que el texto ocupe el mismo espacio que el checkbox */
+    vertical-align: middle; /* alinear el texto con el checkbox */
+    font-family: 'Poppins', sans-serif;
+    
+  }
+
+  #iniciarSesion {
+    border: none; /* eliminar el borde del input */
+    color: #FBCFDC; /* color rosa */
+    text-decoration: underline; /* subrayado */
+    cursor: pointer; /* cursor de mano al pasar el mouse */
+    background-color: transparent;
+    border: none;
+    text-decoration: underline;
+    cursor: pointer;
+    outline: none;
+
+  }
+
+  #iniciarSesion:hover {
+    color: #f5eef1; /* cambiar el color al pasar el mouse */
+  }
+  
+  #termsLink {
+    color: #FBCFDC; /* color rosa */
+    text-decoration: underline; /* subrayado */
+    cursor: pointer; /* cursor de mano al pasar el mouse */
+  }
+  
+  #termsLink:hover {
+    color: #ff3399; /* cambiar el color al pasar el mouse */
+  }
+
+  .question {
+    font-family: 'Poppins', sans-serif;
+    
+  }
 
 
 
