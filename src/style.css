@@ -1,1 +1,165 @@
-/* <img class="imghome" src="../img/imgportada.jpg" alt="imagen de portada">  */
+/* poppins */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap');
+
+* {
+    margin : 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body {
+  overflow: hidden;
+}
+
+  
+:root {
+ --blueCrud:#425A9A;
+ --white:#fff;
+ --pink:#FBCFDC;
+ --fontText: 'Poppins', sans-serif ;
+}
+
+.root{
+    display: flex;  
+    /* border: 2px solid red; */
+}
+
+.containerRegister {
+    display: flex;
+    /* border: 2px solid blue; */
+   
+
+}
+
+.contentHome{
+  flex: 2; 
+    /* border: 2px solid green; */
+   
+}
+
+.contentHome .imghome {
+    width: 100%;
+
+
+}
+
+.contentHome p {
+    color: #425A9A;
+    font-size: 2rem;
+    margin: 40px;
+    padding: 10px;
+}
+
+/* -------------inicia section form  ------------ */
+.sectionForm{
+  flex: 1;
+     display: flex;
+    flex-direction: column;
+    background: var(--blueCrud);
+    text-align: center;
+    justify-content: center; 
+    align-items: center;
+
+}
+
+.sectionForm img {
+    width: 90px;
+   
+}
+/* -------------estilos para los inputs de section form ------------ */
+.sectionForm input {
+    /* estilos para todos los elementos input dentro del elemento con la clase .sectionForm */
+    border-radius: 15px;
+    background-color: #C1E1FF;
+    width: 240px; 
+    height: 32px; 
+    margin: 8px;
+    text-align: center;
+  }
+  .sectionForm input::placeholder {
+    color: #425A9A; 
+    text-align: center;
+  }
+  .sectionForm input:hover {
+    background-color: #a4bacf;
+   
+    transition: background-color 0.5s ease-in-out, border-color 0.5s ease-in-out;
+  }
+
+  #messageName,
+  #messageEmail,
+  #messagePassword,
+  #messagePasswordConfirm {
+    color: #FBCFDC;
+    font-weight: 600;
+  }
+
+  #register {
+    display: block;
+    margin: 0 auto;   
+    border-radius: 15px;
+    color:var(--white);
+    background-color: var(--pink);
+    width: 127px;
+    height: 43px;
+    border:none;
+    font-weight: 600;
+  }
+
+  #register:hover {
+    /* Modificar el estilo del botón cuando el mouse esté sobre él */
+    background-color: #ddb3c4; /* Color rosa */
+  }
+
+  #conditions:required {
+    border: 1px solid #FBCFDC;
+    color: #425A9A;
+    font-family: 'Poppins', sans-serif;
+    width: 15px;
+    vertical-align: middle; 
+    font-size: 16px;
+    font-weight: bold
+
+  }
+
+  #conditions + span {
+    font-size: 16px; /* reducir el tamaño del texto */
+    display: inline-block; /* hacer que el texto ocupe el mismo espacio que el checkbox */
+    vertical-align: middle; /* alinear el texto con el checkbox */
+    font-family: 'Poppins', sans-serif;
+    
+  }
+
+  #iniciarSesion {
+    border: none; /* eliminar el borde del input */
+    color: #FBCFDC; /* color rosa */
+    text-decoration: underline; /* subrayado */
+    cursor: pointer; /* cursor de mano al pasar el mouse */
+    background-color: transparent;
+    border: none;
+    text-decoration: underline;
+    cursor: pointer;
+    outline: none;
+
+  }
+
+  #iniciarSesion:hover {
+    color: #f5eef1; /* cambiar el color al pasar el mouse */
+  }
+  
+  #termsLink {
+    color: #FBCFDC; /* color rosa */
+    text-decoration: underline; /* subrayado */
+    cursor: pointer; /* cursor de mano al pasar el mouse */
+  }
+  
+  #termsLink:hover {
+    color: #ff3399; /* cambiar el color al pasar el mouse */
+  }
+
+  .question {
+    font-family: 'Poppins', sans-serif;
+    
+  }
+
+
+

@@ -6,7 +6,7 @@ export const login = () => {
   
  const view = ` 
     <div class="contentHome">
-         
+        <img class="imghome" src="../img/imgportada.jpg" alt="imagen de portada"> 
         <p>DoggoS es una app para duenos de perros, en el que podras encontrar y compartir recomendaciones sobre el cuidado de
         tus engreidos. Te invitamos a unirte y ser parte de esta gran comunidad doglover.
         ¿Qué esperas? ¡No te pierdas más novedades!</p>
@@ -32,7 +32,7 @@ export const login = () => {
     // console.log(registrate)
     
 
-    registrate.addEventListener('click', () => onNavigate("/"))
+    // registrate.addEventListener('click', () => onNavigate("/"))
     
   container.innerHTML = view;
   return container;

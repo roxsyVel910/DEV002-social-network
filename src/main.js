@@ -12,6 +12,10 @@ const routes = {
     '/login':login
 }
 
+// console.log("ubicacion",window.location.pathname)
+const prints = routes[window.location.pathname];
+root.appendChild(prints());
+
 export const onNavigate = (pathname) => {
     window.history.pushState(
         {},
@@ -26,7 +30,5 @@ export const onNavigate = (pathname) => {
     root.appendChild(routes[pathname]());
 };
 
-// console.log("ubicacion",window.location.pathname)
-const prints = routes[window.location.pathname];
-root.appendChild(prints());
+
 
