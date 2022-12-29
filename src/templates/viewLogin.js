@@ -1,10 +1,12 @@
+import { onNavigate } from "../main.js";
+
 export const login = () => {
     const container = document.createElement('div');
     container.classList.add('containerLogin');
   
  const view = ` 
     <div class="contentHome">
-        <img class="imghome" src="../img/imgportada.jpg" alt="imagen de portada">  
+         
         <p>DoggoS es una app para duenos de perros, en el que podras encontrar y compartir recomendaciones sobre el cuidado de
         tus engreidos. Te invitamos a unirte y ser parte de esta gran comunidad doglover.
         ¿Qué esperas? ¡No te pierdas más novedades!</p>
@@ -19,12 +21,18 @@ export const login = () => {
             <div id="messageEmail"></div>
             <input type="password" id="passwordLogin" placeholder="Contraseña" autocomplete ="off">
             <div id="messagePassword"></div>
-            <button type="submit" id="register">INICIA SESIÓN</button>
+            <button type="submit" id="login">INICIA SESIÓN</button>
         </form>
         <p class="question" >¿NO tienes una cuenta?
             <input id="registrate" type="" value="REGISTRATE">
         </p>
     </div>`
+
+    const registrate = container.querySelector("#registrate");
+    // console.log(registrate)
+    
+
+    registrate.addEventListener('click', () => onNavigate("/"))
     
   container.innerHTML = view;
   return container;

@@ -1,5 +1,7 @@
 import { auth } from "../firebase/index.js";
 import {createUserWithEmailAndPassword} from "https://www.gstatic.com/firebasejs/9.15.0/firebase-auth.js"
+import { onNavigate } from "../main.js";
+
 
 export const register = () => {
     const container = document.createElement('div');
@@ -7,7 +9,7 @@ export const register = () => {
   
  const view = ` 
     <div class="contentHome">
-        <img class="imghome" src="../img/imgportada.jpg" alt="imagen de portada">  
+       
         <p>DoggoS es una app para duenos de perros, en el que podras encontrar y compartir recomendaciones sobre el cuidado de
         tus engreidos. Te invitamos a unirte y ser parte de esta gran comunidad doglover.
         ¿Qué esperas? ¡No te pierdas más novedades!</p>
@@ -51,6 +53,10 @@ const messageEmail = container.querySelector("#messageEmail");
 const messagePassword = container.querySelector("#messagePassword");
 const anotherMessageEmail = container.querySelector("#anotherMessageEmail");
 const messagePasswordConfirm = container.querySelector("#messagePasswordConfirm");
+const iniciarSesion = container.querySelector("#iniciarSesion");
+
+iniciarSesion.addEventListener('click', () => onNavigate("/login"))
+
 
   formRegister.addEventListener('submit', (e) => {
   e.preventDefault();
