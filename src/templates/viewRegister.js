@@ -26,7 +26,10 @@ export const register = () => {
             <div id="messagePassword"></div>
             <input type="password" id="passwordConfirm" placeholder="Confirme su contraseña">
             <div id="messagePasswordConfirm"></div>
-            <label><input type="checkbox" id="conditions" required><span> Acepto los </span> Terminos, Condiciones y Politica de privacidad. </label>
+            <label><input type="checkbox" id="conditions" required>
+            <span> Acepto las </span> 
+            <a href="ruta/a/archivo.pdf" id="termsLink" target="_self">Condiciones y Politica de privacidad.</a>
+            </label>
             <button type="submit" id="register">REGISTRARSE</button>
         </form>
         <p class="question" >¿Ya tienes una cuenta?
