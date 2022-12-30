@@ -18,7 +18,7 @@ body {
  --fontText: 'Poppins', sans-serif ;
 }
 
-.view{
+.root{
     display: flex;  
     /* border: 2px solid red; */
 }
@@ -32,13 +32,12 @@ body {
 
 .contentHome{
   flex: 2; 
-    border: 2px solid green;
+    /* border: 2px solid green; */
    
 }
 
 .contentHome .imghome {
     width: 100%;
-
 
 
 }
