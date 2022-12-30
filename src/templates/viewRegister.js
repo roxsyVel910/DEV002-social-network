@@ -1,5 +1,6 @@
 import { auth } from "../firebase/index.js";
-import {createUserWithEmailAndPassword} from "https://www.gstatic.com/firebasejs/9.15.0/firebase-auth.js"
+import {createUserWithEmailAndPassword, GoogleAuthProvider, signInWithPopup} from "https://www.gstatic.com/firebasejs/9.15.0/firebase-auth.js"
+
 import { onNavigate } from "../main.js";
 
 
@@ -18,7 +19,7 @@ export const register = () => {
         <img src="./img/perro.png" alt="imagen de perrito del logo">
         <h1>DoggoS</h1>
         <h2>Bienvenido(a)</h2>
-        <h3>REGISTRATE</h3>
+        <h3>¡Regístrate!</h3>
         <form action="" id="formRegister">
             <input type="text" id="nameRegister" placeholder="Nombres y Apellidos">
             <div id="messageName"></div>
@@ -28,10 +29,13 @@ export const register = () => {
             <div id="messagePassword"></div>
             <input type="password" id="passwordConfirm" placeholder="Confirme su contraseña">
             <div id="messagePasswordConfirm"></div>
-            <label><input type="checkbox" id="conditions" required>
-            <span> Acepto las </span> 
-            <a href="ruta/a/archivo.pdf" id="termsLink" target="_self">Condiciones y Politica de privacidad.</a>
-            </label>
+            <div class="redes-sociales">
+                <img id="imggoogle" src="./img/google.png" alt="icono de google">
+                <img id="imgfacebook" src="./img/facebook.png" alt="icono de facebook">
+             </div>
+            
+            <label class ="terminos"><input type="checkbox" id="conditions" required>
+             Acepto los <span>Términos y Condiciones y Política de privacidad.</span></label>
             <button type="submit" id="register">REGISTRARSE</button>
         </form>
         <p class="question" >¿Ya tienes una cuenta?
@@ -53,6 +57,7 @@ const messageEmail = container.querySelector("#messageEmail");
 const messagePassword = container.querySelector("#messagePassword");
 const messagePasswordConfirm = container.querySelector("#messagePasswordConfirm");
 const iniciarSesion = container.querySelector("#iniciarSesion");
+const googleLogin = container.querySelector('#imggoogle');
 
 iniciarSesion.addEventListener('click', () => onNavigate("/login"))
 
@@ -73,11 +78,11 @@ const authFirebase = createUserWithEmailAndPassword(auth, emailRegister.value, p
       console.log(error.code)
       
        if(error.code === "auth/invalid-email"){
-          messageEmail.innerHTML = "correo invalido"
+          messageEmail.innerHTML = "correo inválido"
       } else if (error.code === "auth/email-already-in-use"){
           messageEmail.innerHTML = "el correo ya fue utilizado"
       } else if (error.code === "auth/weak-password"){
-          messagePassword.innerHTML = "la contrasena debe tener por lo menos 6 caracteres"
+          messagePassword.innerHTML = "la contraseña debe tener por lo menos 6 carácteres"
       } else if (error.code){
            alert('algo salio mal')
       }
@@ -100,7 +105,33 @@ const authFirebase = createUserWithEmailAndPassword(auth, emailRegister.value, p
        messagePasswordConfirm.innerHTML = ""
    } 
    });
- 
+
+
+   const provider = new GoogleAuthProvider();
+
+   googleLogin.addEventListener('click', ()=> {
+    
+signInWithPopup(auth, provider)
+  .then((result) => {
+    // This gives you a Google Access Token. You can use it to access the Google API.
+    const credential = GoogleAuthProvider.credentialFromResult(result);
+    const token = credential.accessToken;
+    // The signed-in user info.
+    const user = result.user;
+    // ...
+  }).catch((error) => {
+    // Handle Errors here.
+    const errorCode = error.code;
+    const errorMessage = error.message;
+    // The email of the user's account used.
+    const email = error.customData.email;
+    // The AuthCredential type that was used.
+    const credential = GoogleAuthProvider.credentialFromError(error);
+    // ...
+  });
+    
+    
+   })
   return container;
   
 }

@@ -1,163 +1,225 @@
-
 /* poppins */
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap');
-
 * {
     margin : 0;
     padding: 0;
     box-sizing: border-box;
 }
-body {
-  overflow: hidden;
+
+:root{
+  --blue: #425A9A;
+  --pink: #FBCFDC;
+  --white: white;
+  --fontPoppins: 'Poppins', sans-serif;
 }
 
-  
-:root {
- --blueCrud:#425A9A;
- --white:#fff;
- --pink:#FBCFDC;
- --fontText: 'Poppins', sans-serif ;
+body{
+    /* extraligth 200 */
+    font-family: var(--fontPoppins);
 }
 
-.root{
-    display: flex;  
-    /* border: 2px solid red; */
-}
+/* #root{ 
+    width: 1680px;
+    height: 915px;
+    border: 3px solid red;
+}  */
 
-.containerRegister {
+ /* padre de contenthome y sectionForm */
+.containerRegister, .containerLogin {
+    /* width: 100%;
+    height: 100%; */
+    height: 915px;
     display: flex;
-    /* border: 2px solid blue; */
-   
-
-}
-
-.contentHome{
-  flex: 2; 
-    /* border: 2px solid green; */
-   
-}
-
-.contentHome .imghome {
-    width: 100%;
-
-}
-
-.contentHome p {
-    color: #425A9A;
-    font-size: 2rem;
-    margin: 40px;
-    padding: 10px;
-}
-
-/* -------------inicia section form  ------------ */
-.sectionForm{
-  flex: 1;
-     display: flex;
-    flex-direction: column;
-    background: var(--blueCrud);
     text-align: center;
-    justify-content: center; 
-    align-items: center;
-
-}
-
-.sectionForm img {
-    width: 90px;
-   
-}
-/* -------------estilos para los inputs de section form ------------ */
-.sectionForm input {
-    /* estilos para todos los elementos input dentro del elemento con la clase .sectionForm */
-    border-radius: 15px;
-    background-color: #C1E1FF;
-    width: 240px; 
-    height: 32px; 
-    margin: 8px;
-    text-align: center;
-  }
-  .sectionForm input::placeholder {
-    color: #425A9A; 
-    text-align: center;
-  }
-  .sectionForm input:hover {
-    background-color: #a4bacf;
-   
-    transition: background-color 0.5s ease-in-out, border-color 0.5s ease-in-out;
-  }
-
-  #messageName,
-  #messageEmail,
-  #messagePassword,
-  #messagePasswordConfirm {
-    color: #FBCFDC;
-    font-weight: 600;
-  }
-
-  #register {
-    display: block;
-    margin: 0 auto;   
-    border-radius: 15px;
-    color:var(--white);
-    background-color: var(--pink);
-    width: 127px;
-    height: 43px;
-    border:none;
-    font-weight: 600;
-  }
-
-  #register:hover {
-    /* Modificar el estilo del botón cuando el mouse esté sobre él */
-    background-color: #ddb3c4; /* Color rosa */
-  }
-
-  #conditions:required {
-    border: 1px solid #FBCFDC;
-    color: #425A9A;
-    font-family: 'Poppins', sans-serif;
-    width: 15px;
-    vertical-align: middle; 
-    font-size: 16px;
-    font-weight: bold
-
-  }
-
-  #conditions + span {
-    font-size: 16px; /* reducir el tamaño del texto */
-    display: inline-block; /* hacer que el texto ocupe el mismo espacio que el checkbox */
-    vertical-align: middle; /* alinear el texto con el checkbox */
-    font-family: 'Poppins', sans-serif;
     
-  }
+}
 
-  #iniciarSesion {
-    border: none; /* eliminar el borde del input */
-    color: #FBCFDC; /* color rosa */
-    text-decoration: underline; /* subrayado */
-    cursor: pointer; /* cursor de mano al pasar el mouse */
-    background-color: transparent;
-    border: none;
-    text-decoration: underline;
-    cursor: pointer;
-    outline: none;
+/* contenido de la portada de escritorio, imagen y parrafo */
 
-  }
+  .contentHome{
+     width: 70%;
+     /* border: 3px solid blue; */   
+   }
 
-  #iniciarSesion:hover {
-    color: #f5eef1; /* cambiar el color al pasar el mouse */
-  }
-  
-  #termsLink {
-    color: #FBCFDC; /* color rosa */
-    text-decoration: underline; /* subrayado */
-    cursor: pointer; /* cursor de mano al pasar el mouse */
-  }
-  
-  #termsLink:hover {
-    color: #ff3399; /* cambiar el color al pasar el mouse */
-  }
+    .imghome {
+      width: 100%;
+      height: 65%;
+    }
 
-  .question {
-    font-family: 'Poppins', sans-serif;
+    .contentHome p{
+      margin: 40px;
+      padding: 30px;
+      color: #425A9A;
+      font-size: 23px;
+      font-weight: medium;
+    }
+
+/* contenido de los formularios de register y login */
+  .sectionForm{
+    width: 40%;
+    /* border: 3px solid yellow; */
+    background-color: #425A9A;
+    padding: 20px;
+    position: relative;
+  }
+    /* encabezado del formulario */
+    .sectionForm img{
+      width: 90px;
+      height: 90px;
+      position: absolute;
+      margin-top: 62px;
+      /* margin-right: auto;
+      margin-left: auto; */
+    } 
+
+    .sectionForm h1{
+      color: white;
+      font-size: 50px;
+      margin-top: 120px;
+      margin-bottom: 20px;
+
+    }
+
+    .sectionForm h2{
+      color: white;
+      font-size: 20px;
+
+    }
+
+    .sectionForm h3{
+      color: white;
+      font-size: 18px;
+      margin-top: 50px;
+    }
+
+    /* formulario de registrarse y login */
+
+    #formRegister, #formLogin{
+      padding: 50px;
+      display: flex;
+      flex-direction: column;
+      row-gap: 5px;
+      align-items: center;
     
-  }
+    }
 
+    /* inputs del formulario */
+    #nameRegister, #emailRegister, #passwordRegister, #passwordConfirm,
+    #emailLogin, #passwordLogin{
+      background-color: #C1E1FF;
+      height: 30px;
+      width: 200px;
+      border-radius: 15px;
+      text-align: center;
+      font-size: 14px;
+      color: #425A9A;
+    }
+
+    .sectionForm input::placeholder {
+      color: #425A9A; 
+    }
+
+    #messageEmail, #messageName, #messagePassword, #messagePasswordConfirm {
+      color:#FBCFDC;
+      font-size: 12px;
+      font-weight: 600;
+    } 
+
+    /* botones para registrarse e iniciar sesión */
+    #register, #login{
+      background-color: #FBCFDC;
+      margin: 20px;
+      height: 40px;
+      width: 110px;
+      font-size: 12px;
+      border-radius: 20px;
+      border:0 solid transparent;
+      color: #425A9A;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    #register:hover, #login:hover {
+      /* Modificar el estilo del botón cuando el mouse esté sobre él */
+      background-color: white; /* Color rosa */
+      cursor: pointer;
+    }
+
+    .question{
+      margin: 0px;
+      color: white;
+      font-size: 15px;
+    }
+
+    .question input{
+      width: 93px;
+      border: transparent;
+      border-bottom: 2px solid #FBCFDC;
+      background-color: transparent;
+      color: #FBCFDC;
+      text-align: center;
+    }
+
+    .question input:hover{
+      color: var(--white);
+      border-bottom: 2px solid var(--white);
+      cursor: pointer;
+    }
+
+    .terminos {
+      color: var(--white);
+      font-size: 13px;
+      display: inline-block; /* hacer que el texto ocupe el mismo espacio que el checkbox */
+      vertical-align: middle; 
+      /* alinear el texto con el checkbox */
+    }
+
+    .terminos span {
+      color: var(--pink);
+      /* font-size: 15px; */
+    }
+
+    .redes-sociales{
+      display: flex;
+      width: 110px;
+      height: 50px;
+      position: relative;
+      text-align: center;
+      margin: 15px;
+    }
+
+    #imggoogle {
+      width: 45px;
+      height: 45px;
+      position: absolute;
+      margin: 0;
+      left: 0;
+
+    }
+
+    #imgfacebook {
+      width: 45px;
+      height: 45px;
+      position: absolute;
+      margin: 0;
+      right: 0;
+      
+    }
+
+    #imggoogle:hover, #imgfacebook:hover{
+      cursor: pointer;
+    }
+
+
+
+
+
+
+/* form input:focus:required:invalid{
+    border:2px solid #FBCFDC;
+} */
+
+  
+/* <a href="ruta/a/archivo.pdf" id="termsLink" target="_self"></a> */
+  
+    
+  
