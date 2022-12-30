@@ -6,8 +6,8 @@ export const login = () => {
   
  const view = ` 
     <div class="contentHome">
-        <img class="imghome" src="../img/imgportada.jpg" alt="imagen de portada"> 
-        <p>DoggoS es una app para duenos de perros, en el que podras encontrar y compartir recomendaciones sobre el cuidado de
+        <img class="imghome" src="../img/imgportada.jpg" alt="imagen de portada">
+        <p>DoggoS es una app para dueños de perros, en el que podras encontrar y compartir recomendaciones sobre el cuidado de
         tus engreidos. Te invitamos a unirte y ser parte de esta gran comunidad doglover.
         ¿Qué esperas? ¡No te pierdas más novedades!</p>
     </div> 
@@ -15,7 +15,7 @@ export const login = () => {
         <img src="./img/perro.png" alt="imagen de perrito del logo">
         <h1>DoggoS</h1>
         <h2>Bienvenido(a)</h2>
-        <h3>REGISTRATE</h3>
+        <h3>INICIA SESIÓN</h3>
         <form action="" id="formRegister">
             <input type="text" id="emailLogin" placeholder="Correo">
             <div id="messageEmail"></div>
@@ -27,14 +27,19 @@ export const login = () => {
             <input id="registrate" type="" value="REGISTRATE">
         </p>
     </div>`
+    container.innerHTML = view;
+    // const emailLogin = container.querySelector("#emailLogin");const messageEmail container.querySelector("#emailLogin")
+    // const passwordLogin = container.querySelector("#passwordLogin");
+
 
     const registrate = container.querySelector("#registrate");
-    // console.log(registrate)
+
+    console.log(registrate)
     
 
-    // registrate.addEventListener('click', () => onNavigate("/"))
+    registrate.addEventListener('click', () => onNavigate("/"))
     
-  container.innerHTML = view;
+ 
   return container;
   
 }

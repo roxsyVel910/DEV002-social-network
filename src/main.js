@@ -4,6 +4,7 @@ import { login } from "./templates/viewLogin.js";
 
 
 import './components/Register.js'
+console.log("loginn", login)
 
 const root = document.querySelector('#root');
 
@@ -29,6 +30,7 @@ export const onNavigate = (pathname) => {
 
     root.appendChild(routes[pathname]());
 };
+
 
 
 

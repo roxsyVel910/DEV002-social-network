@@ -9,8 +9,8 @@ export const register = () => {
   
  const view = ` 
     <div class="contentHome">
-        <img class="imghome" src="../img/imgportada.jpg" alt="imagen de portada"> 
-        <p>DoggoS es una app para duenos de perros, en el que podras encontrar y compartir recomendaciones sobre el cuidado de
+        <img class="imghome" src="../img/imgportada.jpg" alt="imagen de portada">
+        <p>DoggoS es una app para dueños de perros, en el que podras encontrar y compartir recomendaciones sobre el cuidado de
         tus engreidos. Te invitamos a unirte y ser parte de esta gran comunidad doglover.
         ¿Qué esperas? ¡No te pierdas más novedades!</p>
     </div> 
@@ -51,7 +51,6 @@ const formRegister = container.querySelector("#formRegister");
 const messageName = container.querySelector("#messageName");
 const messageEmail = container.querySelector("#messageEmail");
 const messagePassword = container.querySelector("#messagePassword");
-const anotherMessageEmail = container.querySelector("#anotherMessageEmail");
 const messagePasswordConfirm = container.querySelector("#messagePasswordConfirm");
 const iniciarSesion = container.querySelector("#iniciarSesion");
 
