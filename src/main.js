@@ -4,6 +4,7 @@ import { login } from "./templates/viewLogin.js";
 
 
 import './components/Register.js'
+// console.log("loginn", login)
 
 const root = document.querySelector('#root');
 
@@ -13,8 +14,7 @@ const routes = {
 }
 
 // console.log("ubicacion",window.location.pathname)
-const prints = routes[window.location.pathname];
-root.appendChild(prints());
+
 
 export const onNavigate = (pathname) => {
     window.history.pushState(
@@ -22,13 +22,21 @@ export const onNavigate = (pathname) => {
         pathname,
         window.location.origin + pathname
     );
-
     while(root.firstChild){
         root.removeChild(root.firstChild);
     }
-
     root.appendChild(routes[pathname]());
 };
+
+const prints = routes[window.location.pathname];
+
+window.onpopstate = () => {
+    root.appendChild(prints());
+
+}
+root.appendChild(prints());
+
+
 
 
 
