@@ -1,5 +1,5 @@
 import { auth } from "../firebase/index.js";
-import { signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/9.15.0/firebase-auth.js"
+import { signInWithEmailAndPassword, GoogleAuthProvider, signInWithPopup, FacebookAuthProvider } from "https://www.gstatic.com/firebasejs/9.15.0/firebase-auth.js"
 import { onNavigate } from "../main.js";
 
 
@@ -38,16 +38,16 @@ export const login = () => {
     container.innerHTML = view;
 
     const registrate = container.querySelector("#registrate");
-
     // console.log(registrate)
-    
     registrate.addEventListener('click', () => onNavigate("/"))
     
 const emailLogin = container.querySelector('#emailLogin');
 const passwordLogin = container.querySelector('#passwordLogin');
-const formLogin= container.querySelector('#formLogin');
-const googleLogin = container.querySelector('#imggoogles');
+const formLogin = container.querySelector("#formLogin");
+const googleLogin = container.querySelector('#imggoogle');
 const messagePassword = container.querySelector('#messagePassword');
+const facebookLogin = container.querySelector('#imgfacebook');
+
   
   formLogin.addEventListener('submit', (e) => {
     e.preventDefault();
@@ -57,7 +57,8 @@ const messagePassword = container.querySelector('#messagePassword');
    const signIn =  signInWithEmailAndPassword(auth, email, password)
       .then((signIn) => {
         
-        console.log("iniciando secion exzfd")
+        console.log("iniciando secion exzfd");
+        onNavigate("/home");
       })
       .catch((error) => {
         console.log("errors",error.message)
@@ -79,10 +80,62 @@ const messagePassword = container.querySelector('#messagePassword');
         
       });
       
-  });
+    });
+
+
+  const provider = new GoogleAuthProvider();
+
+//   const auth = getAuth();
+
+    googleLogin.addEventListener('click', ()=> {
+        signInWithPopup(auth, provider)
+            .then((result) => {
+             // This gives you a Google Access Token. You can use it to access the Google API.
+            const credential = GoogleAuthProvider.credentialFromResult(result);
+            const token = credential.accessToken;
+            // The signed-in user info.
+            const user = result.user;
+            // ...
+            }).catch((error) => {
+            // Handle Errors here.
+            const errorCode = error.code;
+            const errorMessage = error.message;
+            // The email of the user's account used.
+            const email = error.customData.email;
+            // The AuthCredential type that was used.
+            const credential = GoogleAuthProvider.credentialFromError(error);
+            // ...
+        });
+    });
+
+
+  const providerF = new FacebookAuthProvider();
+
+    facebookLogin.addEventListener('click', ()=> {
+        signInWithPopup(auth, providerF)
+            .then((result) => {
+             // This gives you a Google Access Token. You can use it to access the Google API.
+            const credential = FacebookAuthProvider.credentialFromResult(result);
+            const token = credential.accessToken;
+            // The signed-in user info.
+            const user = result.user;
+            // ...
+            }).catch((error) => {
+            // Handle Errors here.
+            const errorCode = error.code;
+            const errorMessage = error.message;
+            // The email of the user's account used.
+            const email = error.customData.email;
+            // The AuthCredential type that was used.
+            const credential = FacebookAuthProvider.credentialFromError(error);
+            // ...
+        });
+    });
 
   
   return container;
+
+
 }
 
 

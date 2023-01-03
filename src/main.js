@@ -1,16 +1,17 @@
 import { register } from "./templates/viewRegister.js";
 import { login } from "./templates/viewLogin.js";
+import { home } from "./templates/viewHome.js";
 // console.log(login())
-
-
 import './components/Register.js'
 // console.log("loginn", login)
+import './components/Login.js'
 
 const root = document.querySelector('#root');
 
 const routes = {
     '/': register,
-    '/login':login
+    '/login':login,
+    '/home': home
 }
 
 // console.log("ubicacion",window.location.pathname)
@@ -18,7 +19,7 @@ const routes = {
 
 export const onNavigate = (pathname) => {
     window.history.pushState(
-        {},
+        {state:pathname},
         pathname,
         window.location.origin + pathname
     );
@@ -28,13 +29,18 @@ export const onNavigate = (pathname) => {
     root.appendChild(routes[pathname]());
 };
 
-const prints = routes[window.location.pathname];
+let prints = routes[window.location.pathname];
 
-window.onpopstate = () => {
-    root.appendChild(prints());
-
-}
 root.appendChild(prints());
+
+window.onpopstate = (e) => {
+    console.log(e.state);
+    root.innerHTML = "";
+    // onNavigate(e.state.state)
+    root.appendChild(routes[window.location.pathname]());
+}
+
+
 
 
 
