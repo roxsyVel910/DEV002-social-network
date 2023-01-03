@@ -29,12 +29,14 @@ export const onNavigate = (pathname) => {
 };
 
 const prints = routes[window.location.pathname];
-
+root.appendChild(prints());
 window.onpopstate = () => {
-    root.appendChild(prints());
+  
+    root.innerHTML = '';
+    root.appendChild(routes[window.location.pathname]());
 
 }
-root.appendChild(prints());
+
 
 
 
