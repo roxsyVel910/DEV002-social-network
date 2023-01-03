@@ -1,10 +1,9 @@
 import { register } from "./templates/viewRegister.js";
 import { login } from "./templates/viewLogin.js";
 // console.log(login())
-
-
 import './components/Register.js'
 // console.log("loginn", login)
+import './components/Login.js'
 
 const root = document.querySelector('#root');
 
