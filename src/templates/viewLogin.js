@@ -1,5 +1,5 @@
 import { auth } from "../firebase/index.js";
-import { signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/9.15.0/firebase-auth.js"
+import { signInWithEmailAndPassword, GoogleAuthProvider, signInWithPopup, FacebookAuthProvider } from "https://www.gstatic.com/firebasejs/9.15.0/firebase-auth.js"
 import { onNavigate } from "../main.js";
 
 
@@ -41,46 +41,101 @@ export const login = () => {
     // console.log(registrate)
     registrate.addEventListener('click', () => onNavigate("/"))
     
-// const emailLogin = container.querySelector('#emailLogin');
-// const passwordLogin = container.querySelector('#passwordLogin');
-// const formLogin= container.querySelector('#formLogin');
-// const googleLogin = container.querySelector('#imggoogles');
-// const messagePassword = container.querySelector('#messagePassword');
-  
-//   formLogin.addEventListener('submit', (e) => {
-//     e.preventDefault();
-//     const email = emailLogin.value;
-//     const password = passwordLogin.value;
-  
-//    const signIn =  signInWithEmailAndPassword(auth, email, password)
-//       .then((signIn) => {
-        
-//         console.log("iniciando secion exzfd")
-//       })
-//       .catch((error) => {
-//         console.log("errors",error.message)
-//       // identificardor unico para el error
-//       console.log(error.code)
+const emailLogin = container.querySelector('#emailLogin');
+const passwordLogin = container.querySelector('#passwordLogin');
+const formLogin = container.querySelector("#formLogin");
+const googleLogin = container.querySelector('#imggoogle');
+const messagePassword = container.querySelector('#messagePassword');
+const facebookLogin = container.querySelector('#imgfacebook');
 
-//         // Mostrar mensaje de error al usuario o realizar alguna otra acción
-//         if(error.code === "auth/invalid-email"){
-//             messageEmail.innerHTML = "correo inválido"
-//         } else if (error.code === "auth/user-not-found"){
-//             messageEmail.innerHTML = "no se ha registrado"
-//         } else if (error.code === "auth/wrong-password"){
-//             messagePassword.innerHTML = "contraseña incorrecta"
-//         }else if (error.code === "auth/user-disabled"){
-//             messageEmail.innerHTML = "suarioinhabilitado"
-//         } else if (error.code){
-//              alert('algo salio mal')
-//         }
+  
+  formLogin.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const email = emailLogin.value;
+    const password = passwordLogin.value;
+  
+   const signIn =  signInWithEmailAndPassword(auth, email, password)
+      .then((signIn) => {
         
-//       });
+        console.log("iniciando secion exzfd");
+        onNavigate("/home");
+      })
+      .catch((error) => {
+        console.log("errors",error.message)
+      // identificardor unico para el error
+      console.log(error.code)
+
+        // Mostrar mensaje de error al usuario o realizar alguna otra acción
+        if(error.code === "auth/invalid-email"){
+            messageEmail.innerHTML = "correo inválido"
+        } else if (error.code === "auth/user-not-found"){
+            messageEmail.innerHTML = "no se ha registrado"
+        } else if (error.code === "auth/wrong-password"){
+            messagePassword.innerHTML = "contraseña incorrecta"
+        }else if (error.code === "auth/user-disabled"){
+            messageEmail.innerHTML = "suarioinhabilitado"
+        } else if (error.code){
+             alert('algo salio mal')
+        }
+        
+      });
       
-//   });
+    });
+
+
+  const provider = new GoogleAuthProvider();
+
+//   const auth = getAuth();
+
+    googleLogin.addEventListener('click', ()=> {
+        signInWithPopup(auth, provider)
+            .then((result) => {
+             // This gives you a Google Access Token. You can use it to access the Google API.
+            const credential = GoogleAuthProvider.credentialFromResult(result);
+            const token = credential.accessToken;
+            // The signed-in user info.
+            const user = result.user;
+            // ...
+            }).catch((error) => {
+            // Handle Errors here.
+            const errorCode = error.code;
+            const errorMessage = error.message;
+            // The email of the user's account used.
+            const email = error.customData.email;
+            // The AuthCredential type that was used.
+            const credential = GoogleAuthProvider.credentialFromError(error);
+            // ...
+        });
+    });
+
+
+  const providerF = new FacebookAuthProvider();
+
+    facebookLogin.addEventListener('click', ()=> {
+        signInWithPopup(auth, providerF)
+            .then((result) => {
+             // This gives you a Google Access Token. You can use it to access the Google API.
+            const credential = FacebookAuthProvider.credentialFromResult(result);
+            const token = credential.accessToken;
+            // The signed-in user info.
+            const user = result.user;
+            // ...
+            }).catch((error) => {
+            // Handle Errors here.
+            const errorCode = error.code;
+            const errorMessage = error.message;
+            // The email of the user's account used.
+            const email = error.customData.email;
+            // The AuthCredential type that was used.
+            const credential = FacebookAuthProvider.credentialFromError(error);
+            // ...
+        });
+    });
 
   
   return container;
+
+
 }
 
 

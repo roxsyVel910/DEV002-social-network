@@ -1,5 +1,5 @@
 import { auth } from "../firebase/index.js";
-import {createUserWithEmailAndPassword, GoogleAuthProvider, signInWithPopup} from "https://www.gstatic.com/firebasejs/9.15.0/firebase-auth.js"
+import {createUserWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/9.15.0/firebase-auth.js"
 
 import { onNavigate } from "../main.js";
 
@@ -29,11 +29,6 @@ export const register = () => {
             <div id="messagePassword"></div>
             <input type="password" id="passwordConfirm" placeholder="Confirme su contraseña">
             <div id="messagePasswordConfirm"></div>
-            <div class="redes-sociales">
-                <img id="imggoogle" src="./img/google.png" alt="icono de google">
-                <img id="imgfacebook" src="./img/facebook.png" alt="icono de facebook">
-             </div>
-            
             <label class ="terminos"><input type="checkbox" id="conditions" required>
              Acepto los <span>Términos y Condiciones y Política de privacidad.</span></label>
             <button type="submit" id="register">REGISTRARSE</button>
@@ -71,9 +66,12 @@ const authFirebase = createUserWithEmailAndPassword(auth, emailRegister.value, p
   .then((authFirebase) => {
       // const user = authFirebase.user
       console.log(authFirebase)
+      onNavigate("/home");
   }) 
   .catch((error) => {
       console.log(error.message)
+
+
       // identificardor unico para el error
       console.log(error.code)
       
@@ -90,11 +88,21 @@ const authFirebase = createUserWithEmailAndPassword(auth, emailRegister.value, p
   })
   });
   
+  
   nameRegister.addEventListener("input", () => {
    if (nameRegister.value !== "") {
      messageName.innerHTML = "";
    }
    });
+
+ emailRegister.addEventListener("keyup", () => {
+    messageEmail.innerHTML = "";
+ })
+
+ passwordRegister.addEventListener("keyup", () => {
+  messagePassword.innerHTML = "";
+})
+  
 
   buttonRegister.addEventListener("click", ()=> {
    if( passwordConfirm.value != passwordRegister.value){
@@ -107,31 +115,6 @@ const authFirebase = createUserWithEmailAndPassword(auth, emailRegister.value, p
    });
 
 
-   const provider = new GoogleAuthProvider();
-
-   googleLogin.addEventListener('click', ()=> {
-    
-signInWithPopup(auth, provider)
-  .then((result) => {
-    // This gives you a Google Access Token. You can use it to access the Google API.
-    const credential = GoogleAuthProvider.credentialFromResult(result);
-    const token = credential.accessToken;
-    // The signed-in user info.
-    const user = result.user;
-    // ...
-  }).catch((error) => {
-    // Handle Errors here.
-    const errorCode = error.code;
-    const errorMessage = error.message;
-    // The email of the user's account used.
-    const email = error.customData.email;
-    // The AuthCredential type that was used.
-    const credential = GoogleAuthProvider.credentialFromError(error);
-    // ...
-  });
-    
-    
-   })
   return container;
   
 }
