@@ -1,4 +1,5 @@
 import { onNavigate } from "../main.js";
+import { getStorage } from "https://www.gstatic.com/firebasejs/9.15.0/firebase-storage.js";
 
 export const home = () => {
     const container = document.createElement('div');
