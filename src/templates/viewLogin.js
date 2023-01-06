@@ -20,7 +20,7 @@ export const login = () => {
         <h2>Bienvenido(a)</h2>
         <h3>¡Inicia Sesión!</h3>
         <form action="" id="formLogin">
-            <input type="text" id="emailLogin" placeholder="Correo">
+            <input type="text" id="emailLogin" placeholder="example.98@gmail.com">
             <div id="messageEmail"></div>
             <input type="password" id="passwordLogin" placeholder="Contraseña" autocomplete ="off">
             <div id="messagePassword"></div>

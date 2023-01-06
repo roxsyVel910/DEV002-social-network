@@ -21,9 +21,9 @@ export const register = () => {
         <h2>Bienvenido(a)</h2>
         <h3>¡Regístrate!</h3>
         <form action="" id="formRegister">
-            <input type="text" id="nameRegister" placeholder="Nombres y Apellidos">
+            <input type="text" id="nameRegister" placeholder="Ana Maria Miranda">
             <div id="messageName"></div>
-            <input type="text" id="emailRegister" placeholder="Correo">
+            <input type="text" id="emailRegister" placeholder="example.89@gmail.com">
             <div id="messageEmail"></div>
             <input type="password" id="passwordRegister" placeholder="Contraseña" autocomplete = "off">
             <div id="messagePassword"></div>
