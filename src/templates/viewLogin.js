@@ -65,6 +65,8 @@ const facebookLogin = container.querySelector('#imgfacebook');
       // identificardor unico para el error
       console.log(error.code)
 
+      //messageEmail.innerHTML = getErrorMessage(error)
+
         // Mostrar mensaje de error al usuario o realizar alguna otra acción
         if(error.code === "auth/invalid-email"){
             messageEmail.innerHTML = "correo inválido"
