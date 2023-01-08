@@ -24,6 +24,7 @@ export const login = () => {
             <div id="messageEmail"></div>
             <input type="password" id="passwordLogin" placeholder="Contraseña" autocomplete ="off">
             <div id="messagePassword"></div>
+            <p class="message-redes"> o ingresa con </p>
             <div class="redes-sociales">
                 <img id="imggoogle" src="./img/google.png" alt="icono de google">
                 <img id="imgfacebook" src="./img/facebook.png" alt="icono de facebook">

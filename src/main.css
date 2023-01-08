@@ -1,0 +1,38 @@
+@import url("styles/register_login.css");
+@import url("styles/home.css");
+
+/* poppins */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap');
+
+* {
+    margin : 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    /* extraligth 200 */
+    font-family: var(--fontPoppins);
+}
+
+/* #root{ 
+    width: 1680px;
+    height: 915px;
+    border: 3px solid red;
+}  */
+
+
+
+
+
+
+
+/* form input:focus:required:invalid{
+    border:2px solid #FBCFDC;
+} */
+
+  
+/* <a href="ruta/a/archivo.pdf" id="termsLink" target="_self"></a> */
+  
+    
+  
