@@ -1,9 +1,7 @@
 import { auth } from "../firebase/index.js";
 import { onNavigate } from "../main.js";
-import { getStorage } from "https://www.gstatic.com/firebasejs/9.15.0/firebase-storage.js";
+import { getStorage, ref } from "https://www.gstatic.com/firebasejs/9.15.0/firebase-storage.js";
 
-const storage = getStorage();
-const sparkyRef = ref(storage, '/src/img/imgportada.jpg')
 
 
 export const home = () => {
@@ -21,4 +19,10 @@ export const home = () => {
     return container;
 }
 
-const  storage = getStorage();
+const storage = getStorage();
+const storageRef = ref(storage);
+const imagesRef = ref(storage, 'images');
+
+
+const sparkyRef = ref(storage, '/src/img/imgportada.jpg')
+
