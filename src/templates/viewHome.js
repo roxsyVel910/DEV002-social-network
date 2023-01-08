@@ -44,6 +44,10 @@ export const home = () => {
                 <div class="ContOpciones">
                     <button class="btnEditar">...</button>
                 </div>
+            <form class="ContestComentario">
+                <input type="text" placeholder="Escribe tu comentario aquí">
+                <button type="submit" class="btnComentar">Comentar</button>
+            </form>
            
         </div>
 
