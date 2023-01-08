@@ -4,7 +4,7 @@ export const home = () => {
     const container = document.createElement('div');
     container.classList.add('containerHome');
   
- const home = ` 
+ const view = ` 
     <div class="ContBienvMenuComent"> 
         <div class="ConBienv">
             <div class="ContLogo"> <img src="./img/perro.png" alt="imagen de perrito del logo"></div>
@@ -24,7 +24,7 @@ export const home = () => {
     
         <div class="ContComent">
             <div class="ContBienv">
-                <h2>Hola ${nombreUsuario}, ¿cómo estás hoy?</h2> 
+                <h2>Hola {"aquivakeusuario"}, ¿cómo estás hoy?</h2> 
             </div>
             
             <form class="ContInputPost">
@@ -55,6 +55,5 @@ export const home = () => {
   
 
     container.innerHTML = view;
-
     return container;
 }

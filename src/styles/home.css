@@ -1,0 +1,148 @@
+body {
+    font-family: sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #e9e9e9;
+  }
+  
+  .ContBienvMenuComent {
+    display: flex;
+  }
+  
+  .ConBienv {
+    display: flex;
+    align-items: center;
+    background-color: #00b894;
+    color: white;
+    padding: 20px;
+  }
+  
+  .ContLogo img {
+    height: 40px;
+  }
+  
+  .ContMenu {
+    display: flex;
+    align-items: center;
+    background-color: #00b894;
+    color: white;
+    padding: 20px;
+  }
+  
+  .ContMenu ul {
+    display: flex;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+  
+  .ContMenu li {
+    margin: 0 20px;
+  }
+  
+  .ContComent {
+    display: flex;
+    flex-direction: column;
+    background-color: white;
+    padding: 20px;
+  }
+  
+  .ContBienv {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+  }
+  
+  .ContInputPost {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+  }
+  
+  .ContInputPost input {
+    flex: 1;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px 0 0 5px;
+  }
+  
+  .ContInputPost button {
+    padding: 10px;
+    background-color: #00b894;
+    color: white;
+    border: none;
+    border-radius: 0 5px 5px 0;
+  }
+  
+  .ContPost {
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: 20px;
+    background-color: white;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+  }
+  
+  .ContContePost {
+    flex: 1;
+    padding: 20px;
+  }
+  
+  .ContLikes {
+    display: flex;
+    align-items: center;
+    background-color: #f7f7f7;
+    padding: 10px;
+  }
+  
+  .ContLikes .btnLike {
+    background-color: transparent;
+    border: none;
+    color: #00b894;
+    font-size: 1.2em;
+    cursor: pointer;
+  }
+  
+  .ContLikes .contadorLikes {
+    margin-left: 10px;
+    font-weight: bold;
+  }
+  
+  .ContOpciones {
+    display: flex;
+    align-items: center;
+    background-color: #f7f7f7;
+    padding: 10px;
+  }
+  
+  .ContOpciones .btnEditar {
+    background-color: transparent;
+    border: none;
+    color: #ff7675;
+    font-size: 1.2em;
+    cursor: pointer;
+  }
+  
+  .ContComentario {
+    display: flex;
+    align-items: center;
+    background-color: #f7f7f7;
+    padding: 10px;
+  }
+  
+  .ContComentario input {
+    flex: 1;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px 0 0 5px;
+  }
+  
+  .ContComentario button {
+    padding: 10px;
+    background-color: #00b894;
+    color: white;
+    border: none;
+    border-radius: 0 5px 5px 0;
+  }
