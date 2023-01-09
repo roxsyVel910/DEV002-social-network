@@ -1,4 +1,4 @@
-const firebaseConfig = {
+export const firebaseConfig = {
     apiKey: "AIzaSyAQxr8QueNyoazFnT3cCFo4YeCEz7S4FaE",
     authDomain: "social-network-dog.firebaseapp.com",
     projectId: "social-network-dog",
