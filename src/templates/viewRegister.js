@@ -119,3 +119,4 @@ const authFirebase = createUserWithEmailAndPassword(auth, emailRegister.value, p
   
 }
  
+ 

@@ -1,1 +1,1 @@
-
+ const signInWithEmailAndPassword = (auth, email, password) => {};

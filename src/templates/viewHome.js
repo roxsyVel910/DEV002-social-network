@@ -1,4 +1,7 @@
 import { onNavigate } from "../main.js";
+import { saveDatas, getDatas } from "../components/Home.js";
+
+
 
 export const home = () => {
     const container = document.createElement('div');
@@ -27,13 +30,13 @@ export const home = () => {
                 <h2>Hola {"aquivakeusuario"}, ¿cómo estás hoy?</h2> 
             </div>
             
-            <form class="ContInputPost">
-                    <input type="text" placeholder="Escribe tu publicación aquí">
+            <form id="formPost" class="formPost">
+            <textarea type= "text" id="postArea" rows="5" cols="30"></textarea>
                     <button type="submit" id="btnPublicar">Publicar</button>
             </form>
         </div>
         
-        <div class="ContPost">
+        <div id="contentPost" class="ContPost">
             <div class="ContContePost">
                 <p>Aquí va el contenido del comentario</p>
             </div>
@@ -55,5 +58,27 @@ export const home = () => {
   
 
     container.innerHTML = view;
+
+const formPost = container.querySelector("#formPost");
+const btnPublicar = container.querySelector("#btnPublicar");
+const contentPost = container.querySelector("#contentPost");
+const postArea = container.querySelector("#postArea");
+
+formPost.addEventListener("submit", (e) => {
+    e.preventDefault();
+    saveDatas(postArea.value);
+    formPost.reset();
+})
+
+const querySanpshot = getDatas();
+
+ 
+
+
+
+
+
+
+
     return container;
 }

@@ -56,16 +56,10 @@ const facebookLogin = container.querySelector('#imgfacebook');
   
    const signIn =  signInWithEmailAndPassword(auth, email, password)
       .then((signIn) => {
-        
-        console.log("iniciando secion exzfd");
         onNavigate("/home");
       })
       .catch((error) => {
-        console.log("errors",error.message)
-      // identificardor unico para el error
-      console.log(error.code)
-
-        // Mostrar mensaje de error al usuario o realizar alguna otra acción
+           // Mostrar mensaje de error al usuario o realizar alguna otra acción
         if(error.code === "auth/invalid-email"){
             messageEmail.innerHTML = "correo inválido"
         } else if (error.code === "auth/user-not-found"){
