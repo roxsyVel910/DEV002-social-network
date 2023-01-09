@@ -222,5 +222,56 @@ body{
   
 /* <a href="ruta/a/archivo.pdf" id="termsLink" target="_self"></a> */
   
-    
+/* containerHome  */
+.containerHome {
+  display: flex;
   
+ 
+}
+.menuDesk {
+  flex:1;
+  background:var(--blue);
+  color: azure;
+  height: 100vh;
+  display: flex; /* Habilitamos Flexbox para el elemento hijo */
+  align-items: center;
+  justify-content: center;
+
+}
+.menuDesk_Details h1,h2 {
+  margin-bottom: 40px;
+ 
+}
+.menuDesk_Details ul li {
+  list-style-type: none;
+  color: azure;
+  margin-bottom: 20px;
+}
+.menuDesk_Details ul li a {
+  text-decoration: none;
+  color: azure;
+  
+}
+.containerPost {
+  flex: 4;
+  background: #FBCFDC;
+  
+
+
+}
+
+.containerHome .menuDesk {
+
+}
+.menuDesk  img {
+  width: 90px;
+  margin-left: 15px;
+}
+.containerPost {
+  padding-left: 10vw;
+} 
+.renderPost .writePost input {
+  width: 70%;
+  height: 100px;
+  
+}
