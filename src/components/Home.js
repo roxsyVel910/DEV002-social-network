@@ -5,6 +5,6 @@ const db = getFirestore();
 
 export const saveDatas = (post) => addDoc(collection(db, 'post'), { post});
  
-export const getDatas = () => {getDocs(collection(db, 'post'))}
+export const getDatas = () => getDocs(collection(db, 'post'))
     
  
