@@ -1,5 +1,5 @@
 import { onNavigate } from "../main.js";
-import { saveDatas, getDatas } from "../components/Home.js";
+import { saveDatas, getDatas, db, collection, onSnapshot} from "../components/Home.js";
 
 
 
@@ -49,15 +49,28 @@ formPost.addEventListener("submit", (e) => {
 
 
 window.addEventListener('DOMContentLoaded', () => {
-    const querySanpshot = getDatas()
-    .then((querySanpshot) => {
-        // console.log(querySanpshot)
-        querySanpshot.forEach(element => {
-            const contpost = element.data();
-            list.innerHTML += `<ul>${contpost.post} </ul>`
-            console.log(element.data())
-        });
-    })
+    // onSnapshot(collection, "post"), (querySnapshot)=> {
+    //     querySnapshot.forEach((element) => {
+    //         const contpost = element.data();
+    //         list.innerHTML += `<ul>${contpost.post} </ul>`
+    //         console.log(element.data())
+    //     });
+    // }
+  
+
+
+
+
+    // const querySnapshot = getDatas()
+    // .then((querySnapshot) => {
+    //     // console.log(querySnapshot)
+    //     querySnapshot.forEach(element => {
+    //         const contpost = element.data();
+    //         list.innerHTML += `<ul>${contpost.post} </ul>`
+    //         console.log(element.data())
+    //     });
+    // })
+    
 
     
 
