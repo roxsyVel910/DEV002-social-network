@@ -1,6 +1,7 @@
 import { register } from "./templates/viewRegister.js";
 import { login } from "./templates/viewLogin.js";
 import { home } from "./templates/viewHome.js";
+import { registerDogs } from "./templates/viewRegisterdogs.js";
 // console.log(login())
 import './components/Register.js'
 // console.log("loginn", login)
@@ -11,7 +12,8 @@ const root = document.querySelector('#root');
 const routes = {
     '/': register,
     '/login':login,
-    '/home': home
+    '/home': home,
+    '/dogs': registerDogs
 }
 
 // console.log("ubicacion",window.location.pathname)
