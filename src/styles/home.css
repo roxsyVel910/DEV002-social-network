@@ -1,0 +1,66 @@
+/* ----------------------home------------------------- */
+
+.containerHome{
+    display: grid;
+    grid-template-columns: 20% 80%;
+}
+
+.ConBienv{
+    background-color: #425A9A;
+    height: 30vh;
+    /* width: 20%; */
+    /* border: 2px solid green; */
+    display: flex;
+    flex-direction: column;
+    /* text-align: center; */
+    align-items: center;
+    /* position: fixed; */
+
+}
+
+.ConBienv img {
+    height: 35%;
+    width: 30%;
+    margin-top: 50px;
+    margin-bottom: 0px;
+}
+
+.ConBienv h1{
+    color: white;
+    font-size: 50px;
+   
+}
+
+.ContMenu{
+    background-color: #425A9A ;
+    height: 70vh;
+    /* width: 20%; */
+    /* border: 2px solid red; */
+    text-align: center;
+    color: white;
+    display: flex;
+    flex-direction: column;  
+    /* position: fixed;   */
+    
+}
+
+.ContMenu ul li{
+    padding: 10px;
+    list-style: none;
+    font-size: 20px;
+}
+
+.formPost button{
+    /* text-align: center; */
+    background-color: #FBCFDC;
+    height: 30px;
+    width: 100px;
+    border-radius: 15px;
+    border: transparent;
+    color: #425A9A;
+
+}
+
+.contentPost li, .publicPost {
+    text-align: center;
+}
