@@ -56,8 +56,6 @@ const facebookLogin = container.querySelector('#imgfacebook');
   
    const signIn =  signInWithEmailAndPassword(auth, email, password)
       .then((signIn) => {
-        
-        console.log("iniciando secion exzfd");
         onNavigate("/home");
       })
       .catch((error) => {
