@@ -20,20 +20,22 @@ export const login = () => {
         <h2>Bienvenido(a)</h2>
         <h3>¡Inicia Sesión!</h3>
         <form action="" id="formLogin">
-            <input type="text" id="emailLogin" placeholder="Correo">
+            <input type="text" id="emailLogin" placeholder="ej. anamiranda@gmail.com">
             <div id="messageEmail"></div>
             <input type="password" id="passwordLogin" placeholder="Contraseña" autocomplete ="off">
             <div id="messagePassword"></div>
-            <div class="redes-sociales">
-                <img id="imggoogle" src="./img/google.png" alt="icono de google">
-                <img id="imgfacebook" src="./img/facebook.png" alt="icono de facebook">
-             </div>
             <button type="submit" id="login">INICIA SESIÓN</button>
         </form>
+        <p class="ingresaCon"> o ingresa con</p>
+        <div class="redes-sociales">        
+          <img id="imggoogle" src="./img/google.png" alt="icono de google">
+          <img id="imgfacebook" src="./img/facebook.png" alt="icono de facebook">
+        </div>
         <p class="question" >¿NO tienes una cuenta?
             <input id="registrate" type="" value="REGISTRATE">
         </p>
     </div>`
+   
 
     container.innerHTML = view;
 
@@ -82,6 +84,14 @@ const facebookLogin = container.querySelector('#imgfacebook');
       
     });
 
+    emailLogin.addEventListener("keyup", () => {
+      messageEmail.innerHTML = "";
+    })
+
+   passwordLogin.addEventListener("keyup", () => {
+    messagePassword.innerHTML = "";
+   })
+
 
   const provider = new GoogleAuthProvider();
 
@@ -90,21 +100,25 @@ const facebookLogin = container.querySelector('#imgfacebook');
     googleLogin.addEventListener('click', ()=> {
         signInWithPopup(auth, provider)
             .then((result) => {
+
+              onNavigate("/home");
              // This gives you a Google Access Token. You can use it to access the Google API.
             const credential = GoogleAuthProvider.credentialFromResult(result);
             const token = credential.accessToken;
             // The signed-in user info.
             const user = result.user;
             // ...
-            }).catch((error) => {
-            // Handle Errors here.
+            })
+            .catch((error) => {
+           
+              // Handle Errors here.
             const errorCode = error.code;
             const errorMessage = error.message;
             // The email of the user's account used.
             const email = error.customData.email;
             // The AuthCredential type that was used.
             const credential = GoogleAuthProvider.credentialFromError(error);
-            // ...
+            
         });
     });
 
@@ -114,13 +128,16 @@ const facebookLogin = container.querySelector('#imgfacebook');
     facebookLogin.addEventListener('click', ()=> {
         signInWithPopup(auth, providerF)
             .then((result) => {
-             // This gives you a Google Access Token. You can use it to access the Google API.
+              const user = result.user;
+              // This gives you a Google Access Token. You can use it to access the Google API.
             const credential = FacebookAuthProvider.credentialFromResult(result);
             const token = credential.accessToken;
             // The signed-in user info.
-            const user = result.user;
+            onNavigate("/home");
             // ...
-            }).catch((error) => {
+            })
+            .catch((error) => {
+              console.log(error);  
             // Handle Errors here.
             const errorCode = error.code;
             const errorMessage = error.message;
@@ -128,7 +145,7 @@ const facebookLogin = container.querySelector('#imgfacebook');
             const email = error.customData.email;
             // The AuthCredential type that was used.
             const credential = FacebookAuthProvider.credentialFromError(error);
-            // ...
+            
         });
     });
 

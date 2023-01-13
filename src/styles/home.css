@@ -1,4 +1,13 @@
 /* ----------------------home------------------------- */
+:root{
+    --green: #82CDC0;
+    --pink: #CD828F;
+    --white: white;
+    --fontPoppins: 'Poppins', sans-serif;
+    --plomo:#8F9090;
+    --plomoOscuro: #5D655D;
+    --greenB: #3B766F;
+}
 
 .containerHome{
     display: grid;
@@ -6,7 +15,7 @@
 }
 
 .ConBienv{
-    background-color: #425A9A;
+    background-color: var(--green);
     height: 30vh;
     /* width: 20%; */
     /* border: 2px solid green; */
@@ -26,18 +35,18 @@
 }
 
 .ConBienv h1{
-    color: white;
+    color: var(--greenB);
     font-size: 50px;
    
 }
 
 .ContMenu{
-    background-color: #425A9A ;
+    background-color: var(--green) ;
     height: 70vh;
     /* width: 20%; */
     /* border: 2px solid red; */
     text-align: center;
-    color: white;
+    color: var(--greenB);
     display: flex;
     flex-direction: column;  
     /* position: fixed;   */
