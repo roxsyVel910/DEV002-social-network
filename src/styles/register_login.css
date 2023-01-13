@@ -1,18 +1,21 @@
 :root{
-    --blue: #425A9A;
-    --pink: #FBCFDC;
+    --blue: #82CDC0;
+    --pink: #CD828F;
+    --pinkinput: #D4929E;
     --white: white;
     --fontPoppins: 'Poppins', sans-serif;
-    --skyblue:#C1E1FF;
-
+    --plomo:#8F9090;
+    --plomoOscuro: #5D655D;
+    --greenB: #3B766F;
+    --fontAcme: 'Acme', sans-serif;
   }
 
 /* padre de contenthome y sectionForm */
 .containerRegister, .containerLogin {
     /* width: 100%;
     height: 100%; */
-    height: 915px;
-    /* height: 100 vw; */
+    /* height: 915px; */
+    height: 100vh;
     display: flex;
     text-align: center;
     
@@ -24,6 +27,9 @@
      width: 70%;
      /* border: 3px solid blue; */   
    }
+
+   /*media Query*/
+  
   
     .imghome {
       width: 100%;
@@ -33,9 +39,10 @@
     .contentHome p{
       margin: 40px;
       padding: 30px;
-      color: var(--blue);
+      color: var(--greenB);
       font-size: 23px;
       font-weight: medium;
+      font-family: var(--fontPoppins);
     }
   
   /* contenido de los formularios de register y login */
@@ -44,9 +51,10 @@
     /* border: 3px solid yellow; */
     background-color: var(--blue);
     padding: 20px;
-    position: relative;
-   
+    position: relative; 
+    font-family: var(--fontPoppins); 
   }
+
     /* encabezado del formulario */
     .sectionForm img{
       width: 90px;
@@ -58,21 +66,22 @@
     } 
   
     .sectionForm h1{
-      color: var(--white);
-      font-size: 50px;
+      color: var(--greenB);
+      font-size: 4rem;
       margin-top: 120px;
       margin-bottom: 20px;
+      font-family:'Acme', sans-serif;;
   
     }
   
     .sectionForm h2{
-      color: var(--white);
+      color: var(--greenB);
       font-size: 20px;
   
     }
   
     .sectionForm h3{
-      color: var(--white);
+      color: var(--greenB);
       font-size: 18px;
       margin-top: 50px;
     }
@@ -91,17 +100,18 @@
     /* inputs del formulario */
     #nameRegister, #emailRegister, #passwordRegister, #passwordConfirm,
     #emailLogin, #passwordLogin{
-      background-color: var(--skyblue);
+      background-color: var( --white);
       height: 30px;
       width: 200px;
-      border-radius: 15px;
+      border-radius: 3px;
+      border:transparent;
       text-align: center;
       font-size: 14px;
-      color: var(--blue);
+      /* color: var(--blue); */
     }
   
     .sectionForm input::placeholder {
-      color: var(--blue); 
+      color: var(--plomo); 
     }
   
     #messageEmail, #messageName, #messagePassword, #messagePasswordConfirm {
@@ -119,20 +129,22 @@
       font-size: 12px;
       border-radius: 20px;
       border:0 solid transparent;
-      color: var(--blue);
+      color: var(--white);
       font-family: 'Poppins', sans-serif;
     }
   
     #register:hover, #login:hover {
       /* Modificar el estilo del botón cuando el mouse esté sobre él */
-      background-color: var(--white); /* Color rosa */
+      background-color: var(--pinkinput);
+      /* color: var(--pink); */
       cursor: pointer;
     }
   
     .question{
-      margin: 0px;
+      margin-top: 60px;
       color: var(--white);
       font-size: 15px;
+    
     }
   
     .question input{
@@ -150,19 +162,13 @@
       cursor: pointer;
     }
   
-    .terminos {
+    .ingresaCon{
       color: var(--white);
-      font-size: 13px;
-      display: inline-block; /* hacer que el texto ocupe el mismo espacio que el checkbox */
-      vertical-align: middle; 
-      /* alinear el texto con el checkbox */
+      font-size: 15px; 
+      margin-top: -20px;
+      margin-bottom: 10px;
     }
-  
-    .terminos span {
-      color: var(--pink);
-      /* font-size: 15px; */
-    }
-  
+
     .message-redes{
       color: var(--white);
       font-size: 13px;
@@ -174,7 +180,7 @@
       height: 50px;
       position: relative;
       text-align: center;
-      margin: 15px;
+      margin: auto;
     }
   
     #imggoogle {
@@ -197,10 +203,31 @@
   
     #imggoogle:hover, #imgfacebook:hover{
       cursor: pointer;
+      
     }
   
+  /*media Query*/
+  @media (max-width:820px){
+    .contentHome img, .contentHome p {
+      display: none;
+    }
+    .contentHome {
+      width: 30%;
+
+      background-image: url('../img/imgportada.jpg');
+      background-repeat: no-repeat;
+      background-size: cover;
+      background-position: center center;
   
-  
+    }
+    .sectionForm {
+      width: 70%;
+    }
+
+   
+
+   }
+   
   
   
   

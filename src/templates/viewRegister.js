@@ -21,16 +21,14 @@ export const register = () => {
         <h2>Bienvenido(a)</h2>
         <h3>¡Regístrate!</h3>
         <form action="" id="formRegister">
-            <input type="text" id="nameRegister" placeholder="Nombres y Apellidos">
+            <input type="text" id="nameRegister" placeholder="ej. Ana María Miranda" required>
             <div id="messageName"></div>
-            <input type="text" id="emailRegister" placeholder="Correo">
+            <input type="text" id="emailRegister" placeholder="ej. anamiranda@gmail.com">
             <div id="messageEmail"></div>
             <input type="password" id="passwordRegister" placeholder="Contraseña" autocomplete = "off">
             <div id="messagePassword"></div>
             <input type="password" id="passwordConfirm" placeholder="Confirme su contraseña">
             <div id="messagePasswordConfirm"></div>
-            <label class ="terminos"><input type="checkbox" id="conditions" required>
-             Acepto los <span>Términos y Condiciones y Política de privacidad.</span></label>
             <button type="submit" id="register">REGISTRARSE</button>
         </form>
         <p class="question" >¿Ya tienes una cuenta?
@@ -61,20 +59,27 @@ iniciarSesion.addEventListener('click', () => onNavigate("/login"))
   e.preventDefault();
   console.log(nameRegister.value, emailRegister.value);
 
-
+  let passwor = passwordRegister.value;
+  function validatePassword(passwor) {
+    const re = /(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{8,})/;
+    console.log(re.test(passwor))
+    return re.test(passwor);
+  }
+  
 const authFirebase = createUserWithEmailAndPassword(auth, emailRegister.value, passwordRegister.value)
   .then((authFirebase) => {
       // const user = authFirebase.user
       console.log(authFirebase)
-      onNavigate("/home");
+      if(validatePassword(passwor)){
+      onNavigate("/home")
+      } else if ((!validatePassword(passwor))){
+        console.log("contrasena incorrecta")
+      };
   }) 
   .catch((error) => {
       console.log(error.message)
-
-
       // identificardor unico para el error
       console.log(error.code)
-      
        if(error.code === "auth/invalid-email"){
           messageEmail.innerHTML = "correo inválido"
       } else if (error.code === "auth/email-already-in-use"){
@@ -113,7 +118,7 @@ const authFirebase = createUserWithEmailAndPassword(auth, emailRegister.value, p
        messagePasswordConfirm.innerHTML = ""
    } 
    });
-
+   
 
   return container;
   
