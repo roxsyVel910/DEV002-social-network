@@ -58,11 +58,11 @@ iniciarSesion.addEventListener('click', () => onNavigate("/login"))
   e.preventDefault();
   console.log(nameRegister.value, emailRegister.value);
 ///////////////////////////////////////////////////////
-const email = emailRegister.value
+  const email = emailRegister.value
   const password = passwordRegister.value
   
-registerComponents(email, password)
-  .then((user) => {
+  registerComponents(email, password)
+    .then((user) => {
       // const user = authFirebase.user
       // console.log(user);
       
@@ -85,8 +85,6 @@ registerComponents(email, password)
         onNavigate("/home");
       }
 
-      
-
   })
   });
 ////////////////////////////////////////////////////////
@@ -99,15 +97,14 @@ registerComponents(email, password)
    }
    });
 
- emailRegister.addEventListener("keyup", () => {
+  emailRegister.addEventListener("keyup", () => {
     messageEmail.innerHTML = "";
- })
+  });
 
- passwordRegister.addEventListener("keyup", () => {
-  messagePassword.innerHTML = "";
-})
+  passwordRegister.addEventListener("keyup", () => {
+    messagePassword.innerHTML = "";
+  })
   
-
   buttonRegister.addEventListener("click", ()=> {
    if( passwordConfirm.value != passwordRegister.value){
        messagePasswordConfirm.innerHTML = "la contraseña no es igual"

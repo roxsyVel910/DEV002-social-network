@@ -1,5 +1,5 @@
 import { auth } from "../firebase/index.js";
-import { signInWithEmailAndPassword, GoogleAuthProvider, signInWithPopup, FacebookAuthProvider } from "https://www.gstatic.com/firebasejs/9.15.0/firebase-auth.js"
+import { signInWithEmailAndPassword, GoogleAuthProvider, signInWithPopup } from "https://www.gstatic.com/firebasejs/9.15.0/firebase-auth.js"
 import { onNavigate } from "../main.js";
 
 
@@ -26,10 +26,8 @@ export const login = () => {
             <div id="messagePassword"></div>
             <button type="submit" id="login">INICIA SESIÓN</button>
         </form>
-        <p class="ingresaCon"> o ingresa con</p>
-        <div class="redes-sociales">        
-          <img id="imggoogle" src="./img/google.png" alt="icono de google">
-          <img id="imgfacebook" src="./img/facebook.png" alt="icono de facebook">
+        <div class="redes-sociales">
+          <p class="ingresaCon"> o ingresa con</p> <img id="imggoogle" src="./img/google.png" alt="icono de google">
         </div>
         <p class="question" >¿NO tienes una cuenta?
             <input id="registrate" type="" value="REGISTRATE">
@@ -48,7 +46,7 @@ const passwordLogin = container.querySelector('#passwordLogin');
 const formLogin = container.querySelector("#formLogin");
 const googleLogin = container.querySelector('#imggoogle');
 const messagePassword = container.querySelector('#messagePassword');
-const facebookLogin = container.querySelector('#imgfacebook');
+// const facebookLogin = container.querySelector('#imgfacebook');
 
   
   formLogin.addEventListener('submit', (e) => {
@@ -123,31 +121,7 @@ const facebookLogin = container.querySelector('#imgfacebook');
     });
 
 
-  const providerF = new FacebookAuthProvider();
 
-    facebookLogin.addEventListener('click', ()=> {
-        signInWithPopup(auth, providerF)
-            .then((result) => {
-              const user = result.user;
-              // This gives you a Google Access Token. You can use it to access the Google API.
-            const credential = FacebookAuthProvider.credentialFromResult(result);
-            const token = credential.accessToken;
-            // The signed-in user info.
-            onNavigate("/home");
-            // ...
-            })
-            .catch((error) => {
-              console.log(error);  
-            // Handle Errors here.
-            const errorCode = error.code;
-            const errorMessage = error.message;
-            // The email of the user's account used.
-            const email = error.customData.email;
-            // The AuthCredential type that was used.
-            const credential = FacebookAuthProvider.credentialFromError(error);
-            
-        });
-    });
 
   
   return container;

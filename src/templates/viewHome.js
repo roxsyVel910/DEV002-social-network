@@ -1,10 +1,8 @@
 import { onNavigate } from "../main.js"; 
 import { logout } from "../components/logout.js";
 
-import { saveDatas, getDatas, db, collection, onSnapshot, getOnDatas, deleteData,doc} from "../components/Home.js";
+import { saveDatas, getDatas, getOnDatas, deleteData} from "../components/Home.js";
 
-
-console.log(db)
 
 export const home = () => {
     const container = document.createElement('div');
@@ -12,30 +10,34 @@ export const home = () => {
   
  const view = ` 
  <div class="ConBienv">
- <div class="logo">
-     <img src="./img/perrowhite.png" alt="imagen de perrito del logo">
-     <h1>DoggoS</h1>
- </div>
- <button id="btnCerrarSesion"><img src="./img/cerrar-sesion.png" alt="icono cerrar sesión"> Cerrar Sesión</button>
+    <div class="logo">
+        <img src="./img/perrowhite.png" alt="imagen de perrito del logo">
+        <h1>DoggoS</h1>
+    </div>
+    <div class="cerrar-sesion">
+        <img id="btnCerrarSesion" src="./img/cerrar-sesion.png" alt="icono cerrar sesión">
+        <p class="pcerrarsesion" >Cerrar Sesión</p>
+    </div>
 </div>
 <div class="contentPostPerfil">
- <div class="perfil">
+    <div class="perfil">
 
- </div>
- <div>
-     <div class="publicPost">
-         <h2>HOLA!, <span id="nameusuario"></span></h2> 
-         <form id="formPost" class="formPost">
-             <textarea type= "text" id="postArea" rows="5" cols="30"></textarea>
-             <div id="messagePost"></div>
-             <button type="submit" id="btnPublicar">Publicar</button>
-         </form>
-     </div>
-     <div id="contentPost" class="ContPost">
-         <li class="list"></li>
+    </div>
+    <div>
+         <div class="publicPost">
+             <h2>HOLA!, <span id="nameusuario"></span></h2> 
+             <form id="formPost" class="formPost">
+                <textarea type= "text" id="postArea" rows="5" cols="30" placeholder="¿Tienes una recomendacion para compartir?\n\n... escribe aqui "></textarea>
+                <div id="messagePost"></div>
+                <button type="submit" id="btnPublicar">Publicar</button>
+             </form>
+         </div class="contentDinamico">
+         <p>RECOMENDACIONES</p>
+         <div id="contentPost" class="ContPost">
+            <li class="list"></li>
          
-     </div> 
- </div>
+         </div> 
+    </div>
 </div>`
 
   
@@ -69,16 +71,46 @@ postArea.addEventListener("keyup", () => {
 
 
 
+
     
 getOnDatas((post) =>{
   list.innerHTML=""
   post.forEach((element) => {
     const contpost=element.data();
-    list.innerHTML +=`<ul>${contpost.post} </ul>
-    <button class="btn btn-primary btn-delete"  data-id="${element.id}"> 🗑 Delete
-        </button>`
+    list.innerHTML += `
+    <div class ="containerPost" >
+        <div class="containPost">
+          <div class="headerPost">
+              <div class="user">
+              <img src="img/usuario.png" alt="" /> 
+              <span> Carmen </span>
+              </div>
+              <div class="date"></div>
+              <div class="tools">
+              <button class="btn btn-primary btn-delete"  data-id="${element.id}"> <img src= "img/delete.png " /> </button>
+              <button class="btn btn-primary btn-editar"  data-id=""> <img src= "img/editar.png " /></button>
+              </div>
+              
+          </div>
+          <div class="TextPost">
+              <p>${contpost.post} </p>
+          </div>         
+        </div>
+        <div class = "interactionPost">
+        <span class="btnLike"  data-id=""> <img src= "img/LikepawWhite.png " /></span>
+        <span class="CountLikes"  data-id="">      25   likes       </span>
+        <span class="btnComment"  data-id=""> <img src= "img/commentWhite.png " />    Comment  </span>
+        </div>
+  
+            
+     </div>`
+     
     
   });
+
+  
+
+
 
   const btndelete = list.querySelectorAll('.btn-delete');
 
