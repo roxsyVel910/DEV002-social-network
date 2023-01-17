@@ -51,14 +51,17 @@
     
 }
 
+
 #btnCerrarSesion img{
     height: 20px;
     width: 20px;
    
 }
 
+#btnCerrarSesion:hover{
+    cursor: pointer;
 
-
+}
 /* .ContMenu{
     background-color: var(--green) ;
     height: 70vh; */
