@@ -1,7 +1,7 @@
 import { register } from "./templates/viewRegister.js";
 import { login } from "./templates/viewLogin.js";
 import { home } from "./templates/viewHome.js";
-import { registerDogs } from "./templates/viewRegisterdogs.js";
+
 // console.log(login())
 import './components/Register.js'
 // console.log("loginn", login)
@@ -12,8 +12,7 @@ const root = document.querySelector('#root');
 const routes = {
     '/': register,
     '/login':login,
-    '/home': home,
-    '/dogs': registerDogs
+    '/home': home
 }
 
 // console.log("ubicacion",window.location.pathname)
@@ -32,7 +31,7 @@ export const onNavigate = (pathname) => {
 };
 
 let prints = routes[window.location.pathname];
-console.log(prints);
+// console.log(prints);
 
 root.appendChild(prints());
 

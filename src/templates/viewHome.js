@@ -1,4 +1,6 @@
-import { onNavigate } from "../main.js";
+import { onNavigate } from "../main.js"; 
+import { logout } from "../components/logout.js";
+
 import { saveDatas, getDatas, db, collection, onSnapshot, getOnDatas} from "../components/Home.js";
 
 
@@ -34,6 +36,7 @@ export const home = () => {
      </div> 
  </div>
 </div>`
+
   
 
     container.innerHTML = view;
@@ -43,6 +46,8 @@ const btnPublicar = container.querySelector("#btnPublicar");
 const contentPost = container.querySelector("#contentPost");
 const postArea = container.querySelector("#postArea");
 const list = container.querySelector('.list');
+const btnCerrarSesion = container.querySelector("#btnCerrarSesion")
+
 
 formPost.addEventListener("submit", (e) => {
     e.preventDefault();
@@ -62,7 +67,12 @@ getOnDatas((post) =>{
   })
 
 })
- 
+ //cerrar sesión
+btnCerrarSesion.addEventListener("click", async() => {
+    await logout();
+    console.log("logout")
+    onNavigate("/")
+})
 
 
 

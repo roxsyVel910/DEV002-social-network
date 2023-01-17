@@ -12,6 +12,8 @@ import {createUserWithEmailAndPassword } from "https://www.gstatic.com/firebasej
 // Firebase, esta informacion la utiliza firebase para el uso de su servicio
 
 import { firebaseConfig } from "./config_firebase.js";
+import {onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/9.15.0/firebase-auth.js"
+
 
 
 
@@ -19,5 +21,5 @@ import { firebaseConfig } from "./config_firebase.js";
 const app = initializeApp(firebaseConfig);
 // Initialize Firebase Authentication and get a reference to the service
  const auth = getAuth(app)
- export{createUserWithEmailAndPassword,auth}
+ export{createUserWithEmailAndPassword,auth, onAuthStateChanged,signOut }
 //
