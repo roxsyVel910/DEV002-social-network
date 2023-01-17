@@ -9,67 +9,99 @@
     --greenB: #3B766F;
 }
 
-.containerHome{
-    display: grid;
-    grid-template-columns: 20% 80%;
-}
-
 .ConBienv{
-    background-color: var(--green);
-    height: 30vh;
+    background-color: var(--greenB);
+    height: 8vh;
     /* width: 20%; */
     /* border: 2px solid green; */
     display: flex;
-    flex-direction: column;
+    /* flex-direction: column; */
     /* text-align: center; */
     align-items: center;
     /* position: fixed; */
+    justify-content: space-around;
 
 }
 
-.ConBienv img {
-    height: 35%;
-    width: 30%;
-    margin-top: 50px;
-    margin-bottom: 0px;
-}
-
-.ConBienv h1{
-    color: var(--greenB);
-    font-size: 50px;
-   
-}
-
-.ContMenu{
-    background-color: var(--green) ;
-    height: 70vh;
-    /* width: 20%; */
-    /* border: 2px solid red; */
-    text-align: center;
-    color: var(--greenB);
+.logo {
     display: flex;
-    flex-direction: column;  
-    /* position: fixed;   */
+    align-items: center;
+}
+
+.logo img{
+    height: 50%;
+    width: 10%;
+    /* margin-top: 50px;
+    margin-bottom: 0px; */
+}
+
+.logo h1{
+    color: var(--white);
+    font-size: 2rem;
+}
+
+#btnCerrarSesion {
+    /* margin-right:-30px; */
+    background-color: transparent;
+    height: 40px;
+    width: 200px;
+    border: transparent;
+    color: var(--white);
+    font-size: 1rem;
     
 }
 
-.ContMenu ul li{
+#btnCerrarSesion img{
+    height: 20px;
+    width: 20px;
+   
+}
+
+
+
+/* .ContMenu{
+    background-color: var(--green) ;
+    height: 70vh; */
+    /* width: 20%; */
+    /* border: 2px solid red; */
+    /* text-align: center;
+    color: var(--greenB);
+    display: flex;
+    flex-direction: column;   */
+    /* position: fixed;   */
+    
+/* } */
+
+/* .ContMenu ul li{
     padding: 10px;
     list-style: none;
     font-size: 20px;
+} */
+
+.contentPostPerfil{
+    display: grid;
+    grid-template-columns: 30% 70%;
+    height: 100vh;
+    /* position: fixed; */
+}
+
+.perfil {
+    background-color: var(--green);
+    margin: 15px;
+    border-radius: 50px;
 }
 
 .formPost button{
     /* text-align: center; */
-    background-color: #FBCFDC;
+    background-color: var(--pink);
     height: 30px;
     width: 100px;
     border-radius: 15px;
     border: transparent;
-    color: #425A9A;
+    color: var(--white);
 
 }
 
-.contentPost li, .publicPost {
+.publicPost, .contentPost {
     text-align: center;
 }

@@ -9,29 +9,31 @@ export const home = () => {
     container.classList.add('containerHome');
   
  const view = ` 
-        <div class="ConBienv">
-            <img src="./img/perro.png" alt="imagen de perrito del logo">
-            <h1>DoggoS</h1>
-        </div>
-         <div class="publicPost">
-                <h2>Hola {"aquivakeusuario"}, ¿cómo estás hoy?</h2> 
-                <form id="formPost" class="formPost">
-                    <textarea type= "text" id="postArea" rows="5" cols="30"></textarea>
-                    <button type="submit" id="btnPublicar">Publicar</button>
-                </form>
-         </div> 
-        <div class="ContMenu">
-            <ul>
-                <li id="btnHome">Home</li>
-                <li id="btnBuscador">Buscador</li>
-                <li id="btnPerfil">Perfil</li>
-                <li id="btnPerfilPerro">Perfil perro</li>
-                <li id="btnCerrarSesion">Cerrar sesión</li>
-            </ul>
-        </div>
-        <div id="contentPost" class="ContPost">
-            <li class="list"></li>
-        </div> `
+ <div class="ConBienv">
+ <div class="logo">
+     <img src="./img/perrowhite.png" alt="imagen de perrito del logo">
+     <h1>DoggoS</h1>
+ </div>
+ <button id="btnCerrarSesion"><img src="./img/cerrar-sesion.png" alt="icono cerrar sesión"> Cerrar Sesión</button>
+</div>
+<div class="contentPostPerfil">
+ <div class="perfil">
+
+ </div>
+ <div>
+     <div class="publicPost">
+         <h2>HOLA!, <span id="nameusuario"></span></h2> 
+         <form id="formPost" class="formPost">
+             <textarea type= "text" id="postArea" rows="5" cols="30"></textarea>
+             <div id="messagePost"></div>
+             <button type="submit" id="btnPublicar">Publicar</button>
+         </form>
+     </div>
+     <div id="contentPost" class="ContPost">
+         <li class="list"></li>
+     </div> 
+ </div>
+</div>`
   
 
     container.innerHTML = view;
