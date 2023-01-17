@@ -1,6 +1,5 @@
-import { auth } from "../firebase/index.js";
-import {createUserWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/9.15.0/firebase-auth.js"
 
+import { registerComponents } from "../components/Register.js";
 import { onNavigate } from "../main.js";
 
 
@@ -58,41 +57,41 @@ iniciarSesion.addEventListener('click', () => onNavigate("/login"))
   formRegister.addEventListener('submit', (e) => {
   e.preventDefault();
   console.log(nameRegister.value, emailRegister.value);
-
-  let passwor = passwordRegister.value;
-  function validatePassword(passwor) {
-    const re = /(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{8,})/;
-    console.log(re.test(passwor))
-    return re.test(passwor);
-  }
+///////////////////////////////////////////////////////
+const email = emailRegister.value
+  const password = passwordRegister.value
   
-const authFirebase = createUserWithEmailAndPassword(auth, emailRegister.value, passwordRegister.value)
-  .then((authFirebase) => {
+registerComponents(email, password)
+  .then((user) => {
       // const user = authFirebase.user
-      console.log(authFirebase)
-      if(validatePassword(passwor)){
-      onNavigate("/home")
-      } else if ((!validatePassword(passwor))){
-        console.log("contrasena incorrecta")
-      };
-  }) 
-  .catch((error) => {
-      console.log(error.message)
-      // identificardor unico para el error
-      console.log(error.code)
-       if(error.code === "auth/invalid-email"){
-          messageEmail.innerHTML = "correo inválido"
-      } else if (error.code === "auth/email-already-in-use"){
-          messageEmail.innerHTML = "el correo ya fue utilizado"
-      } else if (error.code === "auth/weak-password"){
-          messagePassword.innerHTML = "la contraseña debe tener por lo menos 6 carácteres"
-      } else if (error.code){
-           alert('algo salio mal')
-      }
+      // console.log(user);
       
+      // if(validatePassword(passwor)){
+      // onNavigate("/home")
+      // } else if ((!validatePassword(passwor))){
+      //   console.log("contrasena incorrecta")
+      // };
+      if (user === 'error1'){
+        messageEmail.innerHTML = "correo inválido"
+      } else if ( user === 'error2'){
+        messageEmail.innerHTML = "el correo ya fue utilizado"
+      } else if (user ==='error3'){
+        messagePassword.innerHTML = "la contraseña debe tener por lo menos 6 carácteres"
+      } else if (user === 'error4'){
+        alert('algo salio mal')
+      }else {
+        const userCredential = user.user
+        console.log( userCredential);
+        onNavigate("/home");
+      }
+
+      
+
   })
   });
+////////////////////////////////////////////////////////
   
+
   
   nameRegister.addEventListener("input", () => {
    if (nameRegister.value !== "") {
