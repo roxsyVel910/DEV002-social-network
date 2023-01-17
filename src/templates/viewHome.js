@@ -1,7 +1,8 @@
 import { onNavigate } from "../main.js";
-import { saveDatas, getDatas, db, collection, onSnapshot} from "../components/Home.js";
+import { saveDatas, getDatas, db, collection, onSnapshot, getOnDatas} from "../components/Home.js";
 
 
+console.log(db)
 
 export const home = () => {
     const container = document.createElement('div');
@@ -48,9 +49,35 @@ formPost.addEventListener("submit", (e) => {
 })
 
 
-window.addEventListener('DOMContentLoaded', () => {
+
+    
+getOnDatas((post) =>{
+  list.innerHTML=""
+  post.forEach((element) => {
+    const contpost=element.data();
+    list.innerHTML +=`<ul>${contpost.post} </ul>`
+    
+  })
+
+})
+ 
+
+
+
+    return container;
+}
+
+
+// window.addEventListener('DOMContentLoaded', () => {
+//     console.log(collection)
+//     console.log("pasocolection")
+    
     // onSnapshot(collection, "post"), (querySnapshot)=> {
     //     querySnapshot.forEach((element) => {
+    //         console.log("anteselement.data()")
+    //         console.log(element.data())
+    //         console.log("DESelement.data()")
+
     //         const contpost = element.data();
     //         list.innerHTML += `<ul>${contpost.post} </ul>`
     //         console.log(element.data())
@@ -63,37 +90,10 @@ window.addEventListener('DOMContentLoaded', () => {
 
     // const querySnapshot = getDatas()
     // .then((querySnapshot) => {
-    //     // console.log(querySnapshot)
+    //     console.log(querySnapshot)
     //     querySnapshot.forEach(element => {
     //         const contpost = element.data();
     //         list.innerHTML += `<ul>${contpost.post} </ul>`
-    //         console.log(element.data())
+          
     //     });
     // })
-    
-
-    
-
-})
-
-
-
-    return container;
-}
-
-
-
-            /* <div class="ContContePost">
-                <p>Aquí va el contenido del comentario</p>
-            </div>
-                <div class="ContLikes">
-                    <button class="btnLike">Like</button>
-                    <p class="contadorLikes">0</p>
-                </div>
-                <div class="ContOpciones">
-                    <button class="btnEditar">...</button>
-                </div>
-            <form class="ContestComentario">
-                <input type="text" placeholder="Escribe tu comentario aquí">
-                <button type="submit" class="btnComentar">Comentar</button>
-            </form> */
