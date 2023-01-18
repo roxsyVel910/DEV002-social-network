@@ -11,6 +11,6 @@ export const getOnDatas = (callback) => onSnapshot(collection(db,'post'),(callba
 
 export const deleteData = (id) => deleteDoc(doc(db, "post", id));
 
-export { collection, onSnapshot, db,getDocs,doc};
+export { collection, onSnapshot, db, getDocs, doc };
     
  
