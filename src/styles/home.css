@@ -163,7 +163,13 @@
     display: flex;
   align-items: center;
 }
-
+.headerPost .tools button {
+    width: 40px;
+    font-weight:200;
+    font-size: 25px;
+   color: var(--greenB);
+    border: 0px;
+}
 .headerPost  .tools img{
     width: 20px;
 }

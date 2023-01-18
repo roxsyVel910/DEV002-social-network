@@ -87,10 +87,10 @@ getOnDatas((post) =>{
               </div>
               <div class="date"></div>
               <div class="tools">
-              <button class="btn btn-primary btn-delete"  data-id="${element.id}"> <img src= "img/delete.png " /> </button>
-              <button class="btn btn-primary btn-editar"  data-id=""> <img src= "img/editar.png " /></button>
+              <span > <img src ="img/delete.png" class="btn btn-primary btn-delete"  data-id="${element.id}"> </span>
+              <span class="btn btn-primary btn-editar"  data-id=""> <img src= "img/editar.png " /></span>
               </div>
-              
+
           </div>
           <div class="TextPost">
               <p>${contpost.post} </p>
