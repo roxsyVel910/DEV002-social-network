@@ -104,10 +104,15 @@ getOnDatas((post) =>{
 
           </div>         
         </div>
-        <div class = "interactionPost">
-        <span class="btnLike"  data-id=""> <img src= "img/LikepawWhite.png " /></span>
-        <span class="CountLikes"  data-id="">      25   likes       </span>
-        <span class="btnComment"  data-id=""> <img src= "img/commentWhite.png " />    Comment  </span>
+        <div class = "likesandCommet">
+            <div class="DivLikes">
+                <img class="btnLike" src= "img/LikepawWhite.png "/>
+                <p class="CountLikes"><span>20</span>Likes</p>
+            </div>
+            <div class="DivComment">
+                <img class="btnComment" src= "img/commentWhite.png " />
+                <p class="CountComment"><span>3</span>Comments</p>
+            </div>
         </div>
             
      </div>`
