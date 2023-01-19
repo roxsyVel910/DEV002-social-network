@@ -1,7 +1,7 @@
 import { onNavigate } from "../main.js"; 
 import { logout } from "../components/logout.js";
-
 import { saveDatas, getDatas, getOnDatas, deleteData} from "../components/Home.js";
+import { serverTimestamp } from "../firebase/index.js";
 
 
 export const home = () => {
@@ -71,7 +71,6 @@ postArea.addEventListener("keyup", () => {
 
 
 
-
     
 getOnDatas((post) =>{
   list.innerHTML=""
@@ -85,7 +84,7 @@ getOnDatas((post) =>{
                     <img src="img/usuario.png" alt="" /> 
                     <span> Carmen </span>
                 </div>
-                <div class="date"></div>
+                <div class="date">""</div>
                 <div class="tools">
                     <span > <img src ="img/delete.png" class="btn btn-primary btn-delete"  data-id="${element.id}"> </span>
                     <span class="btn btn-primary btn-editar"  data-id=""> <img src= "img/editar.png " /></span>
