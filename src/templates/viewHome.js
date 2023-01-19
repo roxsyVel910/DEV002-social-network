@@ -109,10 +109,11 @@ getOnDatas((post) =>{
         <span class="CountLikes"  data-id="">      25   likes       </span>
         <span class="btnComment"  data-id=""> <img src= "img/commentWhite.png " />    Comment  </span>
         </div>
-  
             
      </div>`
      
+
+     /* comentarioas*/
     
   });
 
