@@ -105,7 +105,7 @@ getOnDatas((post) =>{
             </div>
         </div>
     </div>`
-     
+     /* comentarioas*/
     
   });
 
