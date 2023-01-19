@@ -1,7 +1,7 @@
 import { onNavigate } from "../main.js"; 
 import { logout } from "../components/logout.js";
 
-import { saveDatas, getDatas, getOnDatas, deleteData} from "../components/Home.js";
+import { saveDatas, getDatas, getOnDatas, deleteData, updateData, getData } from "../components/Home.js";
 
 
 export const home = () => {
@@ -27,7 +27,7 @@ export const home = () => {
          <div class="publicPost">
              <h2>HOLA!, <span id="nameusuario"></span></h2> 
              <form id="formPost" class="formPost">
-                <textarea type= "text" id="postArea" rows="5" cols="30" placeholder="¿Tienes una recomendacion para compartir?\n\n... escribe aqui "></textarea>
+                <textarea type= "text" class ="postArea" id="postArea" rows="5" cols="30" placeholder="¿Tienes una recomendacion para compartir?\n\n... escribe aqui "></textarea>
                 <div id="messagePost"></div>
                 <button type="submit" id="btnPublicar">Publicar</button>
              </form>
@@ -51,13 +51,19 @@ const postArea = container.querySelector("#postArea");
 const list = container.querySelector('.list');
 const btnCerrarSesion = container.querySelector("#btnCerrarSesion")
 const messagePost = container.querySelector("#messagePost");
+let editStatus = false;
+
 
 //post vacio 
 formPost.addEventListener("submit", (e) => {
     e.preventDefault();
-    if (postArea.value === ""){
+    if (postArea.value === "" ){
         messagePost.innerHTML = "es necesario compartir algo"
-    } else {
+    } else if (editStatus){
+        console.log("actualiza")
+        
+    }
+    else {
     saveDatas(postArea.value);
     formPost.reset();
     }
@@ -88,12 +94,14 @@ getOnDatas((post) =>{
               <div class="date"></div>
               <div class="tools">
               <span > <img src ="img/delete.png" class="btn btn-primary btn-delete"  data-id="${element.id}"> </span>
-              <span class="btn btn-primary btn-editar"  data-id=""> <img src= "img/editar.png " /></span>
+              <span > <img src= "img/editar.png " class="btn btn-primary btn-edit"  data-id="${element.id}"/></span>
               </div>
 
           </div>
           <div class="TextPost">
               <p>${contpost.post} </p>
+              
+
           </div>         
         </div>
         <div class = "interactionPost">
@@ -119,7 +127,22 @@ btndelete.forEach(btn => {
         deleteData(dataset.id);
         console.log('delete', dataset.id);
     })
-})
+});
+
+
+const btnsEdit = list.querySelectorAll(".btn-edit");
+    btnsEdit.forEach((btn) => {
+      btn.addEventListener("click", async (e) => {
+    
+        const postEdit = await getData(e.target.dataset.id)
+        const task = postEdit.data()
+       postArea.value = task.post
+       
+       editStatus = true;
+
+
+      });
+    });
 
 })
 
