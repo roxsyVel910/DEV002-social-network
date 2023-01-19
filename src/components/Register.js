@@ -16,7 +16,7 @@ export const registerComponents = async (email,password) => {
         } else if (error.code === "auth/weak-password"){
             return "error3"
         } else if (error.code){
-             return 'error4'
+            return 'error4'
         }
     }
 }
