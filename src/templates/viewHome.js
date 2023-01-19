@@ -1,7 +1,12 @@
 import { onNavigate } from "../main.js"; 
 import { logout } from "../components/logout.js";
+<<<<<<< HEAD
 
 import { saveDatas, getDatas, getOnDatas, deleteData, updateData, getData } from "../components/Home.js";
+=======
+import { saveDatas, getDatas, getOnDatas, deleteData} from "../components/Home.js";
+import { serverTimestamp } from "../firebase/index.js";
+>>>>>>> b04f3a16d86b78aea382797f99e40f7b62e0b845
 
 
 export const home = () => {
@@ -23,7 +28,7 @@ export const home = () => {
     <div class="perfil">
 
     </div>
-    <div>
+    <div class="interaccionPost">
          <div class="publicPost">
              <h2>HOLA!, <span id="nameusuario"></span></h2> 
              <form id="formPost" class="formPost">
@@ -31,8 +36,8 @@ export const home = () => {
                 <div id="messagePost"></div>
                 <button type="submit" id="btnPublicar">Publicar</button>
              </form>
-         </div class="contentDinamico">
-         <p>RECOMENDACIONES</p>
+         </div>
+         <p class="palabraRecomendaciones" >RECOMENDACIONES</p>
          <div id="contentPost" class="ContPost">
             <li class="list"></li>
          
@@ -77,7 +82,6 @@ postArea.addEventListener("keyup", () => {
 
 
 
-
     
 getOnDatas((post) =>{
   list.innerHTML=""
@@ -86,6 +90,7 @@ getOnDatas((post) =>{
     list.innerHTML += `
     <div class ="containerPost" >
         <div class="containPost">
+<<<<<<< HEAD
           <div class="headerPost">
               <div class="user">
               <img src="img/usuario.png" alt="" /> 
@@ -103,15 +108,34 @@ getOnDatas((post) =>{
               
 
           </div>         
+=======
+            <div class="headerPost">
+                <div class="user">
+                    <img src="img/usuario.png" alt="" /> 
+                    <span> Carmen </span>
+                </div>
+                <div class="date">""</div>
+                <div class="tools">
+                    <span > <img src ="img/delete.png" class="btn btn-primary btn-delete"  data-id="${element.id}"> </span>
+                    <span class="btn btn-primary btn-editar"  data-id=""> <img src= "img/editar.png " /></span>
+                </div>
+            </div>
+            <div class="TextPost">
+                <p>${contpost.post} </p>
+            </div>         
+>>>>>>> b04f3a16d86b78aea382797f99e40f7b62e0b845
         </div>
-        <div class = "interactionPost">
-        <span class="btnLike"  data-id=""> <img src= "img/LikepawWhite.png " /></span>
-        <span class="CountLikes"  data-id="">      25   likes       </span>
-        <span class="btnComment"  data-id=""> <img src= "img/commentWhite.png " />    Comment  </span>
+        <div class = "likesandCommet">
+            <div class="DivLikes">
+                <img class="btnLike" src= "img/LikepawWhite.png "/>
+                <p class="CountLikes"><span>20</span>Likes</p>
+            </div>
+            <div class="DivComment">
+                <img class="btnComment" src= "img/commentWhite.png " />
+                <p class="CountComment"><span>3</span>Comments</p>
+            </div>
         </div>
-  
-            
-     </div>`
+    </div>`
      
     
   });
