@@ -14,12 +14,16 @@ import {createUserWithEmailAndPassword } from "https://www.gstatic.com/firebasej
 import { firebaseConfig } from "./config_firebase.js";
 import {onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/9.15.0/firebase-auth.js"
 
+import { getFirestore,collection,  addDoc, getDocs, onSnapshot,doc, deleteDoc, orderBy, serverTimestamp } from "https://www.gstatic.com/firebasejs/9.15.0/firebase-firestore.js"
+
 
 
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
 // Initialize Firebase Authentication and get a reference to the service
- const auth = getAuth(app)
- export{createUserWithEmailAndPassword,auth, onAuthStateChanged,signOut }
-//
+ const auth = getAuth(app);
+
+ export{createUserWithEmailAndPassword,auth, onAuthStateChanged,signOut,
+    getFirestore,collection,  addDoc, getDocs, onSnapshot,doc, deleteDoc, orderBy, serverTimestamp}
+

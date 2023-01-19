@@ -92,9 +92,11 @@
 }
 
 .perfil {
+    height: 80vh;
     background-color: var(--green);
     margin: 45px;
     border-radius: 50px;
+    /* position: fixed; */
 }
 
 
