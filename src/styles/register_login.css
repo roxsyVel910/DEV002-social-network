@@ -189,6 +189,11 @@
       cursor: pointer;
       
     }
+    .posTexArea {
+      border: none;
+      background-color: transparent;
+     
+    }
   
   /*media Query*/
 @media only screen and (min-width: 370px) and (max-width: 820px){

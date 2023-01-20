@@ -1,5 +1,5 @@
 import { auth } from "../firebase/index.js";
-import { getFirestore,collection,  addDoc, getDocs, onSnapshot,doc, deleteDoc, getDoc } from "https://www.gstatic.com/firebasejs/9.15.0/firebase-firestore.js"
+import { getFirestore,collection,  addDoc, getDocs, onSnapshot,doc, deleteDoc, getDoc, updateDoc } from "https://www.gstatic.com/firebasejs/9.15.0/firebase-firestore.js"
 
 const db = getFirestore();
 

@@ -52,21 +52,33 @@ const list = container.querySelector('.list');
 const btnCerrarSesion = container.querySelector("#btnCerrarSesion")
 const messagePost = container.querySelector("#messagePost");
 let editStatus = false;
+let id = "";
 
 
 //post vacio 
-formPost.addEventListener("submit", (e) => {
+
+formPost.addEventListener("submit", async (e) => {
     e.preventDefault();
-    if (postArea.value === "" ){
-        messagePost.innerHTML = "es necesario compartir algo"
-    } else if (editStatus){
-        console.log("actualiza")
+    const postEditado = postArea.value
+    try {
+
+     if (!editStatus){
+        await saveDatas( postEditado);
+       
         
     }
     else {
-    saveDatas(postArea.value);
-    formPost.reset();
+    await updateData(id, { post: postEditado });
+
+        editStatus = false;
+        id = "";
+        btnPublicar.innerHTML = "publicar";
     }
+
+    formPost.reset();
+} catch (error){
+    console.log(error);
+}
 })
 
 postArea.addEventListener("keyup", () => {
@@ -99,7 +111,8 @@ getOnDatas((post) =>{
 
           </div>
           <div class="TextPost">
-              <p>${contpost.post} </p>
+          <p>${contpost.post} </p>
+
               
 
           </div>         
@@ -118,7 +131,7 @@ getOnDatas((post) =>{
      </div>`
      
 
-     /* comentarioas*/
+  
     
   });
 
@@ -130,6 +143,7 @@ getOnDatas((post) =>{
 
 btndelete.forEach(btn => {
     btn.addEventListener('click', ({target:{dataset}}) => {
+
         deleteData(dataset.id);
         console.log('delete', dataset.id);
     })
@@ -139,17 +153,25 @@ btndelete.forEach(btn => {
 const btnsEdit = list.querySelectorAll(".btn-edit");
     btnsEdit.forEach((btn) => {
       btn.addEventListener("click", async (e) => {
-    
+        try {
         const postEdit = await getData(e.target.dataset.id)
         const task = postEdit.data()
-        
+
+        editStatus = true;
+       id = postEdit.id;
        postArea.value = task.post
        
-       editStatus = true;
+       
 
+       btnPublicar.innerHTML = "Save Change"
+        } catch(error) {
+            console.log(error);
+        }
 
       });
     });
+
+
 
 })
 
@@ -169,32 +191,3 @@ btnCerrarSesion.addEventListener("click", async() => {
 }
 
 
-// window.addEventListener('DOMContentLoaded', () => {
-//     console.log(collection)
-//     console.log("pasocolection")
-    
-    // onSnapshot(collection, "post"), (querySnapshot)=> {
-    //     querySnapshot.forEach((element) => {
-    //         console.log("anteselement.data()")
-    //         console.log(element.data())
-    //         console.log("DESelement.data()")
-
-    //         const contpost = element.data();
-    //         list.innerHTML += `<ul>${contpost.post} </ul>`
-    //         console.log(element.data())
-    //     });
-    // }
-  
-
-
-
-
-    // const querySnapshot = getDatas()
-    // .then((querySnapshot) => {
-    //     console.log(querySnapshot)
-    //     querySnapshot.forEach(element => {
-    //         const contpost = element.data();
-    //         list.innerHTML += `<ul>${contpost.post} </ul>`
-          
-    //     });
-    // })
