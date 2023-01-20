@@ -114,6 +114,9 @@ iniciarSesion.addEventListener('click', () => onNavigate("/login"))
        messagePasswordConfirm.innerHTML = ""
    } 
    });
+
+
+  
    
 
   return container;

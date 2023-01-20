@@ -15,6 +15,7 @@
 /* ------------------------------------ navegador/logo/cerrarsesion */
 .ConBienv{
     background-color: var(--greenB);
+    width: 100VW;
     height: 8vh;
     /* width: 20%; */
     /* border: 2px solid green; */
@@ -24,6 +25,7 @@
     align-items: center;
     /* position: fixed; */
     justify-content: space-between;
+    /* position: sticky; */
 
 }
 
@@ -86,7 +88,7 @@
 /* padre de ambos div del contenido */
 .contentPostPerfil{
     display: grid;
-    grid-template-columns: 30% 70%;
+    grid-template-columns: 35% 65%;
     /* height: 100vh; */
    
 }
@@ -96,7 +98,7 @@
     background-color: var(--green);
     margin: 45px;
     border-radius: 50px;
-    /* position: fixed; */
+    /* position: sticky; */
 }
 
 

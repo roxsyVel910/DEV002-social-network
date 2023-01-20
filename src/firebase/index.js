@@ -14,7 +14,7 @@ import {createUserWithEmailAndPassword } from "https://www.gstatic.com/firebasej
 import { firebaseConfig } from "./config_firebase.js";
 import {onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/9.15.0/firebase-auth.js"
 
-import { getFirestore,collection,  addDoc, getDocs, onSnapshot,doc, deleteDoc, orderBy, serverTimestamp } from "https://www.gstatic.com/firebasejs/9.15.0/firebase-firestore.js"
+import { getFirestore,collection,  addDoc, getDocs, onSnapshot,doc, deleteDoc, orderBy, Timestamp, getDoc, query, updateDoc } from "https://www.gstatic.com/firebasejs/9.15.0/firebase-firestore.js"
 
 
 
@@ -25,5 +25,5 @@ const app = initializeApp(firebaseConfig);
  const auth = getAuth(app);
 
  export{createUserWithEmailAndPassword,auth, onAuthStateChanged,signOut,
-    getFirestore,collection,  addDoc, getDocs, onSnapshot,doc, deleteDoc, orderBy, serverTimestamp}
+    getFirestore,collection,  addDoc, getDocs, onSnapshot,doc, deleteDoc, orderBy, Timestamp,getDoc, query, updateDoc}
 
