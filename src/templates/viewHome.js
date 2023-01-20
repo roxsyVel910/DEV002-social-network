@@ -1,7 +1,7 @@
 import { onNavigate } from "../main.js"; 
 import { logout } from "../components/logout.js";
-
-import { saveDatas, getDatas, getOnDatas, deleteData, updateData, getData } from "../components/Home.js";
+import { saveDatas, getDatas, getOnDatas, deleteData, getData, updateData} from "../components/Home.js";
+import { Timestamp } from "../firebase/index.js";
 
 
 export const home = () => {
@@ -21,6 +21,8 @@ export const home = () => {
 </div>
 <div class="contentPostPerfil">
     <div class="perfil">
+        <p id="username"></p>
+        <p id="useremail"></p>
 
     </div>
     <div>
@@ -51,35 +53,33 @@ const postArea = container.querySelector("#postArea");
 const list = container.querySelector('.list');
 const btnCerrarSesion = container.querySelector("#btnCerrarSesion")
 const messagePost = container.querySelector("#messagePost");
+
+
+// para la funcion editar y actualizar
 let editStatus = false;
 let id = "";
+const options = { weekday: 'long', year: 'numeric', month: 'short', day: 'numeric' };
 
 
-//post vacio 
-
-formPost.addEventListener("submit", async (e) => {
+ 
+formPost.addEventListener("submit", (e) => {
     e.preventDefault();
-    const postEditado = postArea.value
-    try {
-
-     if (!editStatus){
-        await saveDatas( postEditado);
+    //no permitir enviar el post vacio
+    if (postArea.value === ""){
+        messagePost.innerHTML = "es necesario compartir algo"
+    } else if (!editStatus){
+        saveDatas( postArea.value, Timestamp.fromDate(new Date()));
        
-        
-    }
-    else {
-    await updateData(id, { post: postEditado });
-
+    } else {
+        updateData(id, { post: postArea.value });
         editStatus = false;
         id = "";
         btnPublicar.innerHTML = "publicar";
-    }
-
+    } 
+   
     formPost.reset();
-} catch (error){
-    console.log(error);
-}
-})
+
+});
 
 postArea.addEventListener("keyup", () => {
     messagePost.innerHTML = "";
@@ -87,35 +87,31 @@ postArea.addEventListener("keyup", () => {
 
  
 
+// --------mostrar los post de manera dinámica
+// post es el objeto de los post, el data es el objeto de cada post y el .post(propiedad) es lo que esta en el value
 
-
-
-    
 getOnDatas((post) =>{
+    // console.log(post);
   list.innerHTML=""
   post.forEach((element) => {
     const contpost=element.data();
     list.innerHTML += `
     <div class ="containerPost" >
         <div class="containPost">
-          <div class="headerPost">
-              <div class="user">
-              <img src="img/usuario.png" alt="" /> 
-              <span> Carmen </span>
-              </div>
-              <div class="date"></div>
-              <div class="tools">
-              <span > <img src ="img/delete.png" class="btn btn-primary btn-delete"  data-id="${element.id}"> </span>
-              <span > <img src= "img/editar.png " class="btn btn-primary btn-edit"  data-id="${element.id}"/></span>
-              </div>
-
-          </div>
-          <div class="TextPost">
-          <p>${contpost.post} </p>
-
-              
-
-          </div>         
+            <div class="headerPost">
+                <div class="user">
+                    <img src="img/usuario.png" alt="" /> 
+                    <span> Carmen </span>
+                </div>
+                <div class="date">${contpost.date.toDate().toLocaleDateString('es-es', options)}</div>
+                <div class="tools">
+                    <img src="img/delete.png" class="btn-delete"  data-id="${element.id}">
+                    <img src="img/editar.png" class="btn-edit" data-id="${element.id}">
+                </div>
+            </div>
+            <div class="TextPost">
+                <p class="newPost">${contpost.post} </p>
+            </div>         
         </div>
         <div class = "likesandCommet">
             <div class="DivLikes">
@@ -133,50 +129,64 @@ getOnDatas((post) =>{
 
   
     
+
   });
 
   
 
+// --------------------------------delete
+// // data.id(id puede ser sustituido por cualquier otro nombre)es codigo estandar de html/ 
+// significa que se guardara datos dentro de ese boton/ es como crear una variable dentro de html
 
+    const btndelete = list.querySelectorAll('.btn-delete');
+    // console.log(btndelete)
+    btndelete.forEach(btn => {
+    // console.log(btn)
+    // target es una propiedad del objeto del evento - dataset es una propiedad de target, la cual tiene el ID del boton
+        btn.addEventListener('click', ({target:{dataset}}) => {
+            deleteData(dataset.id);
+            // console.log('delete', dataset.id);
+        })
+    });
 
-  const btndelete = list.querySelectorAll('.btn-delete');
+// ------------------------------editar
+    const btneditar = list.querySelectorAll('.btn-edit');
+    
+    // console.log(btneditar)
+    btneditar.forEach(buton => {
+    // console.log(buton)
+        buton.addEventListener('click', async(e) => {
+            try {
+                const postEdit = await getData(e.target.dataset.id)
+                const task = postEdit.data()
+        
+                editStatus = true;
+               id = postEdit.id;
+               postArea.value = task.post
+               
+               btnPublicar.innerHTML = "Save"
+                } catch(error) {
+                    console.log(error);
+                }
+        
+              });
+            });
+        
+            
+        // const newPost = list.querySelectorAll('.newPost')
+        // newPost.post = doc.data().post
+        // console.log(newPost.post)
+        // postArea.value = doc.data().post
+        // const newPost = list.querySelector(`.newPost-${contpost.post}`)
+        // console.log(newPost.post)
 
-btndelete.forEach(btn => {
-    btn.addEventListener('click', ({target:{dataset}}) => {
-
-        deleteData(dataset.id);
-        console.log('delete', dataset.id);
-    })
 });
 
 
-const btnsEdit = list.querySelectorAll(".btn-edit");
-    btnsEdit.forEach((btn) => {
-      btn.addEventListener("click", async (e) => {
-        try {
-        const postEdit = await getData(e.target.dataset.id)
-        const task = postEdit.data()
-
-        editStatus = true;
-       id = postEdit.id;
-       postArea.value = task.post
-       
-       
-
-       btnPublicar.innerHTML = "Save Change"
-        } catch(error) {
-            console.log(error);
-        }
-
-      });
-    });
 
 
 
-})
-
-
- //cerrar sesión
+//-------------------------cerrar sesión
 btnCerrarSesion.addEventListener("click", async() => {
     await logout();
     console.log("logout")
