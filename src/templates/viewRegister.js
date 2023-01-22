@@ -1,6 +1,9 @@
+import { auth } from "../firebase/index.js";
 
-import { registerComponents } from "../components/Register.js";
+import { registerComponents} from "../components/Register.js";
 import { onNavigate } from "../main.js";
+import { createUser } from "../components/Home.js";
+
 
 
 export const register = () => {
@@ -56,13 +59,23 @@ iniciarSesion.addEventListener('click', () => onNavigate("/login"))
 
   formRegister.addEventListener('submit', (e) => {
   e.preventDefault();
+ 
+
   console.log(nameRegister.value, emailRegister.value);
-///////////////////////////////////////////////////////
+
+  const name = nameRegister.value
   const email = emailRegister.value
   const password = passwordRegister.value
+
+ 
+
+  registerComponents(name, email, password)
   
-  registerComponents(email, password)
+
     .then((user) => {
+      
+      
+
       // const user = authFirebase.user
       // console.log(user);
       
@@ -80,8 +93,8 @@ iniciarSesion.addEventListener('click', () => onNavigate("/login"))
       } else if (user === 'error4'){
         alert('algo salio mal')
       }else {
-        const userCredential = user.user
-        console.log( userCredential);
+        
+       
         onNavigate("/home");
       }
 

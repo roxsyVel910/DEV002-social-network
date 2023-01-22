@@ -92,6 +92,7 @@ const messagePassword = container.querySelector('#messagePassword');
 
 
   const provider = new GoogleAuthProvider();
+  
 
 //   const auth = getAuth();
 
@@ -105,6 +106,7 @@ const messagePassword = container.querySelector('#messagePassword');
             const token = credential.accessToken;
             // The signed-in user info.
             const user = result.user;
+            localStorage.setItem( 'user' ,JSON.stringify(user))
             // ...
             })
             .catch((error) => {

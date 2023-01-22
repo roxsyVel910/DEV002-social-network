@@ -1,7 +1,7 @@
 import { onNavigate } from "../main.js"; 
-import { logout } from "../components/logout.js";
-import { saveDatas, getDatas, getOnDatas, deleteData, getData, updateData} from "../components/Home.js";
-import { Timestamp } from "../firebase/index.js";
+import { logout} from "../components/logout.js";
+import { getDatas, getOnDatas, deleteData, getData, updateData, createPost, createUser} from "../components/Home.js";
+import { Timestamp,auth } from "../firebase/index.js";
 
 
 export const home = () => {
@@ -60,15 +60,22 @@ let editStatus = false;
 let id = "";
 const options = { weekday: 'long', year: 'numeric', month: 'short', day: 'numeric' };
 
+  
+
 
  
 formPost.addEventListener("submit", (e) => {
     e.preventDefault();
+    const getUsuario = JSON.parse(localStorage.getItem('user'));
+    const nameUser= JSON.parse(localStorage.getItem('userName'));
+    console.log('uuser name local storage', nameUser)
+
+  console.log("usuariolocalstorage", getUsuario.email)
     //no permitir enviar el post vacio
     if (postArea.value === ""){
         messagePost.innerHTML = "es necesario compartir algo"
     } else if (!editStatus){
-        saveDatas( postArea.value, Timestamp.fromDate(new Date()));
+        createPost(getUsuario.uid, nameUser, postArea.value, Timestamp.fromDate(new Date()));
        
     } else {
         updateData(id, { post: postArea.value });
@@ -92,7 +99,14 @@ postArea.addEventListener("keyup", () => {
 
 getOnDatas((post) =>{
     // console.log(post);
+
   list.innerHTML=""
+  const getUsuario = JSON.parse(localStorage.getItem('user'));
+  const nameUser= JSON.parse(localStorage.getItem('userName'));
+    console.log('uuser name local storage', nameUser)
+  console.log("usuariolocalstorage", getUsuario.email)
+
+  
   post.forEach((element) => {
     const contpost=element.data();
     list.innerHTML += `
@@ -101,7 +115,7 @@ getOnDatas((post) =>{
             <div class="headerPost">
                 <div class="user">
                     <img src="img/usuario.png" alt="" /> 
-                    <span> Carmen </span>
+                    <span>Maria</span>
                 </div>
                 <div class="date">${contpost.date.toDate().toLocaleDateString('es-es', options)}</div>
                 <div class="tools">
