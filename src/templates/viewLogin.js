@@ -109,7 +109,7 @@ const messagePassword = container.querySelector('#messagePassword');
             const user = result.user;
             console.log(user)
             localStorage.setItem("user",JSON.stringify(user))
-            const userlocalStorage = JSON.parse(localStorage.getItem("user"));
+            // const userlocalStorage = JSON.parse(localStorage.getItem("user"));
             // saveDatasUser(userlocalStorage.displayName, userlocalStorage.email , userlocalStorage.user.uid)
             // ...
             })

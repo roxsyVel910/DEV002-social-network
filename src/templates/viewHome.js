@@ -106,7 +106,7 @@ getOnDatas((post) =>{
             <div class="headerPost">
                 <div class="user">
                     <img src="./img/usuario.png" alt="" /> 
-                    <span> ${user.displayName} </span>
+                    <span>${user.displayName}</span>
                 </div>
                 <div class="header2">
                     <div class="date">${contpost.date.toDate().toLocaleDateString('es-es', options)}</div>
@@ -134,8 +134,7 @@ getOnDatas((post) =>{
             </div>
         </div>
     </div>`
-    } 
-    else {
+    } else {
         list.innerHTML += `
     <div class ="containerPost" >
         <div class="containPost">
@@ -170,13 +169,12 @@ getOnDatas((post) =>{
 
 
 // -------------------------  boton 3 puntos
-  const btneditdelete = list.querySelector("#btneditdelete");
-  const listadebotones = list.querySelector(".listadebotones")
-  
-  btneditdelete.addEventListener('click', () => {
-      listadebotones.classList.toggle('mostrar')
-  });
-  
+const btneditdelete = list.querySelector("#btneditdelete");
+const listadebotones = list.querySelector(".listadebotones")
+
+btneditdelete.addEventListener('click', () => {
+    listadebotones.classList.toggle('mostrar')
+});
 
 // --------------------------------delete
 // // data.id(id puede ser sustituido por cualquier otro nombre)es codigo estandar de html/ 
@@ -279,8 +277,6 @@ btnCerrarSesion.addEventListener("click", async() => {
     console.log("logout")
     onNavigate("/")
 })
-
-
 
 
 
