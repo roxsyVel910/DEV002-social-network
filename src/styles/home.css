@@ -90,15 +90,53 @@
     display: grid;
     grid-template-columns: 35% 65%;
     /* height: 100vh; */
-   
+
 }
 
 .perfil {
-    height: 80vh;
+    height: 50vh;
     background-color: var(--green);
     margin: 45px;
-    border-radius: 50px;
+    border-radius: 10px;
     /* position: sticky; */
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    align-items: center;
+    /* justify-content: center; */
+    row-gap: 10px;
+}
+
+.perfil h2{
+    font-family: var(--fontAcme);
+    font-size: 2rem;
+    color: var(--greenB);
+    margin-top: 15px;
+}
+
+.imgUsuario {
+    height: 30%;
+    width: 30%;
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+
+.imgUsuario img{
+    height: 100%;
+    width: 100%;
+}
+
+.pusuario, .pcorreo{
+    color: var(--greenB);
+    font-family: var(--fontPoppins);
+    font-size: 1rem ;
+}
+
+.displayname, .emailUser{
+    color: var(--white);
+    font-family: var(--fontPoppins);
+    font-size: 0.8rem;
+
 }
 
 
@@ -184,7 +222,7 @@
 .ContPost {
     /* width: 80vw; */
     display: flex;
-    flex-direction: column; 
+    flex-direction: column;
     /* row-gap: 10px; */
 }
 
@@ -204,28 +242,64 @@
 
 }
 
+/* encabezado de los post usuario, fecha y tres puntos */
 .headerPost {
     display: flex;
     justify-content:space-between;
-    width:100% ;
+    width:100%;
     font-family: var(--fontPoppins);
     color: #3B766F;
+    align-items: center;
+}
+
+.header2 {
+    display: flex;
+    /* margin-left: 10px; */
 }
 
 .headerPost .user img {
     width: 30px;
-    margin-right: 10px;
+    /* margin-left: 10px; */
 }
 
 .headerPost .user {
     display: flex;
     align-items: center;
-    
+
 }
 
+/* boton editar y eliminar/toggle */
 .headerPost  .tools img{
     width: 20px;
+
 }
+
+.btneditdelete{
+    border: none;
+}
+
+.btneditdelete:hover {
+    cursor: pointer;
+}
+
+.listadebotones{
+    list-style: none;
+    display: none;
+   
+}
+
+.mostrar{
+    display: block;
+    display: flex;
+
+}
+
+.btn-delete:hover, .btn-edit:hover {
+    cursor: pointer;
+}
+
+
+/* ---------contenido del post dinamico */
 
 .containPost .TextPost {
     margin: 2% 2% 2% 40px;
@@ -238,7 +312,7 @@
     /* padding: 1% 4%; */
     color:var(--white);
     font-size: 1rem;
-    width: 95%; 
+    width: 95%;
     height: 4vh;
     font-family:var(--fontPoppins);
     display: flex;

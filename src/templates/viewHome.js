@@ -1,6 +1,6 @@
 import { onNavigate } from "../main.js"; 
-import { logout } from "../components/logout.js";
-import { saveDatas, getDatas, getOnDatas, deleteData, getData, updateData} from "../components/Home.js";
+import { logout, viewUser } from "../components/logout.js";
+import { saveDatasPost, getDatas, getOnDatas, deleteData, getData, updateData, getDatasUser} from "../components/Home.js";
 import { Timestamp } from "../firebase/index.js";
 
 
@@ -14,20 +14,18 @@ export const home = () => {
         <img src="./img/perrowhite.png" alt="imagen de perrito del logo">
         <h1>DoggoS</h1>
     </div>
-    <div class="cerrar-sesion">
-        <img id="btnCerrarSesion" src="./img/cerrar-sesion.png" alt="icono cerrar sesión">
-        <p class="pcerrarsesion" >Cerrar Sesión</p>
+    <div class="cerrar-sesion" id="btnCerrarSesion">
+        <img src="./img/cerrar-sesion.png" alt="icono cerrar sesión">
+        <p class="pcerrarsesion">Cerrar Sesión</p>
     </div>
 </div>
 <div class="contentPostPerfil">
-    <div class="perfil">
-        <p id="username"></p>
-        <p id="useremail"></p>
-
+    <div id="perfil" class="perfil">
+        <h2>Perfil</h2>
     </div>
     <div>
          <div class="publicPost">
-             <h2>HOLA!, <span id="nameusuario"></span></h2> 
+             <div class="saludo" id="saludo" ></div> 
              <form id="formPost" class="formPost">
                 <textarea type= "text" class ="postArea" id="postArea" rows="5" cols="30" placeholder="¿Tienes una recomendacion para compartir?\n\n... escribe aqui "></textarea>
                 <div id="messagePost"></div>
@@ -53,7 +51,12 @@ const postArea = container.querySelector("#postArea");
 const list = container.querySelector('.list');
 const btnCerrarSesion = container.querySelector("#btnCerrarSesion")
 const messagePost = container.querySelector("#messagePost");
+<<<<<<< HEAD
 
+=======
+const perfil = container.querySelector("#perfil");
+const saludo = container.querySelector("#saludo");
+>>>>>>> refs/remotes/origin/main
 
 // para la funcion editar y actualizar
 let editStatus = false;
@@ -64,12 +67,14 @@ const options = { weekday: 'long', year: 'numeric', month: 'short', day: 'numeri
  
 formPost.addEventListener("submit", (e) => {
     e.preventDefault();
+    const user = JSON.parse(localStorage.getItem("user"));
+    // const user = viewUser();
+    const arrayLikes = []
     //no permitir enviar el post vacio
     if (postArea.value === ""){
         messagePost.innerHTML = "es necesario compartir algo"
     } else if (!editStatus){
-        saveDatas( postArea.value, Timestamp.fromDate(new Date()));
-       
+        saveDatasPost(user.displayName, user.uid, Timestamp.fromDate(new Date()), postArea.value, arrayLikes);
     } else {
         updateData(id, { post: postArea.value });
         editStatus = false;
@@ -93,20 +98,31 @@ postArea.addEventListener("keyup", () => {
 getOnDatas((post) =>{
     // console.log(post);
   list.innerHTML=""
+   const user = JSON.parse(localStorage.getItem("user"));
+
   post.forEach((element) => {
+    
     const contpost=element.data();
-    list.innerHTML += `
+    // console.log(contpost)
+
+    if(user.uid === contpost.uid){
+        list.innerHTML += `
     <div class ="containerPost" >
         <div class="containPost">
             <div class="headerPost">
                 <div class="user">
-                    <img src="img/usuario.png" alt="" /> 
-                    <span> Carmen </span>
+                    <img src="./img/usuario.png" alt="" /> 
+                    <span> ${user.displayName} </span>
                 </div>
-                <div class="date">${contpost.date.toDate().toLocaleDateString('es-es', options)}</div>
-                <div class="tools">
-                    <img src="img/delete.png" class="btn-delete"  data-id="${element.id}">
-                    <img src="img/editar.png" class="btn-edit" data-id="${element.id}">
+                <div class="header2">
+                    <div class="date">${contpost.date.toDate().toLocaleDateString('es-es', options)}</div>
+                    <div class="tools">
+                        <button id="btneditdelete" class="btneditdelete"><img src="./img/tres-puntos.png" alt=""></button>
+                        <ul class="listadebotones">
+                            <li><img src="img/delete.png" class="btn-delete"  data-id="${element.id}"></li>
+                            <li><img src="img/editar.png" class="btn-edit" data-id="${element.id}"></li>
+                        </ul>
+                    </div>
                 </div>
             </div>
             <div class="TextPost">
@@ -123,15 +139,49 @@ getOnDatas((post) =>{
                 <p class="CountComment"><span>3</span>Comments</p>
             </div>
         </div>
-            
-     </div>`
-     
+    </div>`
+    } 
+    else {
+        list.innerHTML += `
+    <div class ="containerPost" >
+        <div class="containPost">
+            <div class="headerPost">
+                <div class="user">
+                    <img src="./img/usuario.png" alt="" /> 
+                    <span> ${user.displayName} </span>
+                </div>
+                <div class="date">${contpost.date.toDate().toLocaleDateString('es-es', options)}</div>
+            </div>
+            <div class="TextPost">
+                <p class="newPost">${contpost.post} </p>
+            </div>         
+        </div>
+        <div class = "likesandCommet">
+            <div class="DivLikes">
+                <img class="btnLike" src= "img/LikepawWhite.png "/>
+                <p class="CountLikes"><span>20</span>Likes</p>
+            </div>
+            <div class="DivComment">
+                <img class="btnComment" src= "img/commentWhite.png " />
+                <p class="CountComment"><span>3</span>Comments</p>
+            </div>
+        </div>
+    </div>`
 
-  
+    }
     
-
+    
+      
   });
 
+
+// -------------------------  boton 3 puntos
+  const btneditdelete = list.querySelector("#btneditdelete");
+  const listadebotones = list.querySelector(".listadebotones")
+  
+  btneditdelete.addEventListener('click',() => {
+      listadebotones.classList.toggle('mostrar')
+  })
   
 
 // --------------------------------delete
@@ -183,7 +233,50 @@ getOnDatas((post) =>{
 });
 
 
+getDatasUser() 
+.then ((usuarios) => {
+  // console.log(users)
+ 
+  const user = JSON.parse(localStorage.getItem("user"));
 
+  usuarios.forEach(doc => {
+
+      perfil.innerHTML="";
+      saludo.innerHTML="";
+
+    //   console.log(doc.data())
+
+      if(doc.data().uid === user.uid){
+          perfil.innerHTML += 
+      `<h2>Perfil</h2>
+      <div class="imgUsuario">
+      <img src='./img/user.png' alt=""></div>
+      <p class="pusuario">Usuario</p>
+      <p class="displayname">${doc.data().name}</p>
+      <p class="pcorreo">Correo</p>
+      <p class="emailUser">${doc.data().email}</p>`
+
+      saludo.innerHTML += `<h2>HOLA!, ${doc.data().name}</h2>`
+      // imprimir desde aqui el nombre del usuario que esta en el post
+
+      } else {
+          perfil.innerHTML += 
+      `<h2>Perfil</h2>
+      <div class="imgUsuario">
+      <img src='./img/user.png'alt=""></div>
+      <p class="pusuario">Usuario</p>
+      <p class="displayname">${user.displayName}</p>
+      <p class="pcorreo">Correo</p>
+      <p class="emailUser">${user.email}</p>`
+
+      saludo.innerHTML += `<h2>HOLA!, ${user.displayName}</h2>`
+
+      }
+
+  })
+  
+
+})
 
 
 //-------------------------cerrar sesión
@@ -192,6 +285,7 @@ btnCerrarSesion.addEventListener("click", async() => {
     console.log("logout")
     onNavigate("/")
 })
+
 
 
 

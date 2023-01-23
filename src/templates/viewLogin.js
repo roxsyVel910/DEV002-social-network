@@ -1,6 +1,7 @@
 import { auth } from "../firebase/index.js";
 import { signInWithEmailAndPassword, GoogleAuthProvider, signInWithPopup } from "https://www.gstatic.com/firebasejs/9.15.0/firebase-auth.js"
 import { onNavigate } from "../main.js";
+import { saveDatasUser } from "../components/Home.js";
 
 
 export const login = () => {
@@ -56,6 +57,7 @@ const messagePassword = container.querySelector('#messagePassword');
   
    const signIn =  signInWithEmailAndPassword(auth, email, password)
       .then((signIn) => {
+        // localStorage.setItem("user",JSON.stringify(signIn))
         onNavigate("/home");
       })
       .catch((error) => {
@@ -98,13 +100,17 @@ const messagePassword = container.querySelector('#messagePassword');
     googleLogin.addEventListener('click', ()=> {
         signInWithPopup(auth, provider)
             .then((result) => {
-
+              
               onNavigate("/home");
              // This gives you a Google Access Token. You can use it to access the Google API.
             const credential = GoogleAuthProvider.credentialFromResult(result);
             const token = credential.accessToken;
             // The signed-in user info.
             const user = result.user;
+            console.log(user)
+            localStorage.setItem("user",JSON.stringify(user))
+            const userlocalStorage = JSON.parse(localStorage.getItem("user"));
+            // saveDatasUser(userlocalStorage.displayName, userlocalStorage.email , userlocalStorage.user.uid)
             // ...
             })
             .catch((error) => {
