@@ -1,6 +1,7 @@
 
 import { registerComponents } from "../components/Register.js";
 import { onNavigate } from "../main.js";
+import { saveDatasUser } from "../components/Home.js";
 
 
 export const register = () => {
@@ -81,7 +82,10 @@ iniciarSesion.addEventListener('click', () => onNavigate("/login"))
         alert('algo salio mal')
       }else {
         const userCredential = user.user
-        console.log( userCredential);
+        localStorage.setItem("user",JSON.stringify(userCredential))
+        saveDatasUser(nameRegister.value, emailRegister.value, user.user.uid);
+        // console.log(saveDatasUser);
+        console.log(userCredential);
         onNavigate("/home");
       }
 

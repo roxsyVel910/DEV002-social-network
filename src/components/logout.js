@@ -1,6 +1,7 @@
 import { auth, onAuthStateChanged, signOut } from "../firebase/index.js";
 
 const user = auth.currentUser;
+console.log(user)
 
 
 export const viewUser = onAuthStateChanged (auth, (user) => {
@@ -28,6 +29,7 @@ export const viewUser = onAuthStateChanged (auth, (user) => {
     } else {
       // User is signed out
       console.log(user)
+      localStorage.removeItem("user")
       // ...
     }
   });
