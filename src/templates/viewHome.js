@@ -173,9 +173,9 @@ getOnDatas((post) =>{
   const btneditdelete = list.querySelector("#btneditdelete");
   const listadebotones = list.querySelector(".listadebotones")
   
-  btneditdelete.addEventListener('click',() => {
+  btneditdelete.addEventListener('click', () => {
       listadebotones.classList.toggle('mostrar')
-  })
+  });
   
 
 // --------------------------------delete
