@@ -4,23 +4,26 @@ import { auth, getFirestore,collection,  addDoc, getDocs, onSnapshot,doc, delete
 const db = getFirestore();
 
 // export const saveDatas = (post) => addDoc(collection(db, 'post'), {post});
-export const saveDatas = (post,date) => addDoc(collection(db, 'newpost'), {post,date});
+export const saveDatasUser = (name,email,uid) => addDoc(collection(db, 'usuarios'), {name,email,uid});
+
+export const saveDatasPost = (user,uid,date,post,likes) => addDoc(collection(db, 'post'), {user,uid,date,post,likes});
  
- 
-export const getDatas = () => getDocs(collection(db, 'newpost'));
+export const getDatas = () => getDocs(collection(db, 'post'));
+
+export const getDatasUser = () => getDocs(collection(db, 'usuarios'));
 
 export const getOnDatas = (callback) => {
-    const orderQuery = query(collection(db,'newpost'),orderBy("date","desc"));
+    const orderQuery = query(collection(db,'post'),orderBy("date","desc"));
     onSnapshot(orderQuery,(callback))};
 
 // orderBy("date","desc")
 
-export const deleteData = (id) => deleteDoc(doc(db, "newpost", id));
+export const deleteData = (id) => deleteDoc(doc(db, "post", id));
 
-export const getData = (id) => getDoc(doc(db, "newpost", id));
+export const getData = (id) => getDoc(doc(db, "post", id));
 
 export const updateData = (id, newFields) =>
-  updateDoc(doc(db, "newpost", id), newFields);
+  updateDoc(doc(db, "post", id), newFields);
 
 export { collection, onSnapshot, db, getDocs, doc };
     
