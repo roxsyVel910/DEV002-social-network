@@ -1,13 +1,17 @@
-import { auth, createUserWithEmailAndPassword} from "../firebase/index.js";
+import { auth, createUserWithEmailAndPassword, updateProfile} from "../firebase/index.js";
 
-export const registerComponents = async (email,password) => {
+export const registerComponents = async (email,password, displayName) => {
     try {
-         return await createUserWithEmailAndPassword(auth,email,password)
-    } catch(error){
-        // throw 
+         return await createUserWithEmailAndPassword(auth,email,password).then((result) => {
+            console.log(displayName)
+            updateProfile(auth.currentUser, { displayName })
+            return result
+         })
+         
+    } catch(error){ 
         // console.log(error.message)
         // identificardor unico para el error
-        console.log(error.code)
+        console.log(error)
 
          if(error.code === "auth/invalid-email"){
             return "error1"
