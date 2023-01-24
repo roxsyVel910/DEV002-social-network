@@ -243,6 +243,7 @@
     font-family: var(--fontPoppins);
     color: #3B766F;
     align-items: center;
+    
 }
 
 .header2 {
@@ -253,12 +254,17 @@
 .headerPost .user img {
     width: 30px;
     /* margin-left: 10px; */
+    padding-right: 10px;
 }
 
 .headerPost .user {
     display: flex;
     align-items: center;
+    
+}
 
+.date{
+    font-size: 0.9rem;
 }
 
 /* boton editar y eliminar/toggle */
@@ -306,19 +312,28 @@
     color:var(--white);
     font-size: 1rem;
     width: 95%;
-    height: 4vh;
+    height: 3vh;
     font-family:var(--fontPoppins);
+    font-size: 0.8rem;
     display: flex;
-    justify-content: space-around;
+    /* justify-content: space-around; */
     margin-bottom: 20px;
+    
+}
+
+.DivLikes {
+    /* width: 10%; */
+    display: flex;
+    justify-content: flex-start;
+    padding-top: 3px;
+    margin-left: 15px;
 
 }
 
-.DivLikes, .DivComment{
-    width: 14%;
-    display: flex;
-    justify-content: space-around;
-
+.btnLike {
+    /* padding-top: 1px; */
+    width: 80%;
+    height: 80%;
 }
 
 

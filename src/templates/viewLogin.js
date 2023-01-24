@@ -56,8 +56,8 @@ const messagePassword = container.querySelector('#messagePassword');
     const password = passwordLogin.value;
   
    const signIn =  signInWithEmailAndPassword(auth, email, password)
-      .then((signIn) => {
-        // localStorage.setItem("user",JSON.stringify(signIn))
+      .then((user) => {
+        localStorage.setItem("user",JSON.stringify(user.user))
         onNavigate("/home");
       })
       .catch((error) => {
@@ -110,7 +110,7 @@ const messagePassword = container.querySelector('#messagePassword');
             console.log(user)
             localStorage.setItem("user",JSON.stringify(user))
             // const userlocalStorage = JSON.parse(localStorage.getItem("user"));
-            // saveDatasUser(userlocalStorage.displayName, userlocalStorage.email , userlocalStorage.user.uid)
+            saveDatasUser(auth.currentUser.displayName, auth.currentUser.email , auth.currentUser.uid)
             // ...
             })
             .catch((error) => {

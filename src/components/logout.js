@@ -29,6 +29,7 @@ export const viewUser = onAuthStateChanged (auth, (user) => {
     } else {
       // User is signed out
       console.log(user)
+
       localStorage.removeItem("user")
       // ...
     }
