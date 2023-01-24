@@ -17,10 +17,7 @@
     background-color: var(--greenB);
     width: 100VW;
     height: 8vh;
-    /* width: 20%; */
-    /* border: 2px solid green; */
     display: flex;
-    /* flex-direction: column; */
     /* text-align: center; */
     align-items: center;
     /* position: fixed; */
@@ -149,7 +146,6 @@
     /* align-items: center; */
 }
 
-
 /* --------------------------hijos de interaccionPost */
 
 /* ----------formulario para postear */
@@ -248,6 +244,7 @@
 
 .header2 {
     display: flex;
+    margin-top: 5px;
     /* margin-left: 10px; */
 }
 
@@ -265,6 +262,7 @@
 
 .date{
     font-size: 0.9rem;
+    padding-right: 6px;
 }
 
 /* boton editar y eliminar/toggle */
@@ -281,17 +279,17 @@
     cursor: pointer;
 }
 
-.listadebotones{
+/* .listadebotones{
     list-style: none;
     display: none;
    
-}
+} */
 
-.mostrar{
+/* .mostrar{
     display: block;
     display: flex;
 
-}
+} */
 
 .btn-delete:hover, .btn-edit:hover {
     cursor: pointer;
@@ -341,21 +339,225 @@
     width: 20px;
 } */
 
-@media (max-width: 360px){
-    .pcerrarsesion{
-        display: none;
+/*media Query*/
+@media only screen and (min-width: 370px) and (max-width: 820px){
+    .logo {
+        width: 150px;
+        height: 80px;
+        align-items: center;
+        margin-left: 50px;
+    }
+    
+    .logo img{
+        height: 100%;
+        width: 50%;
+    }
+    
+    .logo h1{
+        font-size: 2.5rem;
+    }
+    
+    .cerrar-sesion{
+        height: 90px;
+        width: 200px;
+        /* margin-right:-30px; */
+        display: flex;
+        justify-content: space-evenly;
+        align-items: center;
+        margin-right: 20px;
+    
+    }
 
+    .cerrar-sesion img{
+        height: 35px;
+        width: 35px;
+    
+    }
+
+    .cerrar-sesion p{
+        font-size: 1.3rem;
+        padding-left: 10px;
     }
 
     .contentPostPerfil{
         display: flex;
         flex-direction: column;
-        /* flex-direction: row; */
+        align-items: center;
     }
 
     .perfil {
-        background-color: var(--green);
-        /* margin: 15px;
-        border-radius: 50px; */
+        height: 40vh;
+        width: 45vw;
+        row-gap: 3px;
+    }
+    
+    .perfil h2{
+        font-size: 2.4rem;
+        margin-top: 14px;
+    }
+    
+    .imgUsuario {
+        height: 32%;
+        width: 40%;
+    }
+
+    .pusuario, .pcorreo{
+        font-size: 1.5rem ;
+    }
+    
+    .displayname, .emailUser{
+        font-size: 1.2rem;
+    }
+    
+    .interaccionPost {
+        padding: 25px;
+        width: 90%;
+    }
+
+    .publicPost {
+        margin-left: 15px;
+    }
+
+    .publicPost h2{
+        font-size: 2.3rem;
+    }
+
+    #postArea {
+        width: 100%;
+        height: 35%;
+        font-size: 1.2rem;
+    }
+
+    #messagePost{
+        font-size: 1.2rem;
+    }
+
+    .formPost button{
+        height: 45px;
+        width: 110px;
+        font-size: 1rem;
+    }
+
+    .palabraRecomendaciones{
+        font-size: 2.3rem;
+    }
+
+    .containPost {
+        width: 100%;
+    }
+
+    .containPost .TextPost {
+        font-size: 1.2rem;
+    }
+
+    .headerPost {
+      font-size: 1.3rem ;
+        
+    }
+
+    .date{
+        font-size: 1.2rem;
+    }
+
+    .likesandCommet{
+        width: 100%;
+    }
+
+}
+
+@media (max-width: 360px){
+    .logo {
+        width: 100px;
+        height: 60px;
+        align-items: center;
+        margin-left: 30px;
+    }
+    
+    .logo img{
+        height: 80%;
+        width: 40%;
+    }
+    
+    .logo h1{
+        font-size: 1.5rem;
+    }
+    
+    .cerrar-sesion{
+        height: 60px;
+        width: 50px;
+        /* margin-right:-30px; */
+        display: flex;
+        justify-content: space-evenly;
+        align-items: center;
+        margin-right: 10px;
+    
+    }
+    
+    .pcerrarsesion{
+        display: none;
+    }
+
+    .contentPostPerfil{
+        display: flex;
+        flex-direction: column;
+    }
+
+    .perfil {
+        height: 43vh;
+        row-gap: 3px;
+    }
+    
+    .perfil h2{
+        font-size: 1.8rem;
+        margin-top: 14px;
+    }
+    
+    .imgUsuario {
+        height: 35%;
+        width: 35%;
+    }
+    
+    .interaccionPost {
+        padding: 25px;
+        width: 100%;
+    }
+
+    .publicPost {
+        margin-right: 0px;
+    }
+
+    .publicPost h2{
+        font-size: 1.6rem;
+    }
+
+    #postArea {
+        width: 100%;
+        height: 35%;
+        font-size: 0.9rem;
+    }
+
+    #messagePost{
+        font-size: 0.8rem;
+    }
+
+    .palabraRecomendaciones{
+        font-size: 1.3rem;
+    }
+
+    .containPost {
+        width: 100%;
+    }
+
+    .containPost .TextPost {
+        font-size: 0.9rem;
+    }
+
+    .date{
+        font-size: 0.7rem;
+        margin-top: 5px;
+    }
+
+    .likesandCommet{
+        width: 100%;
     }
 }

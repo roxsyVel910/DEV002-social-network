@@ -55,7 +55,7 @@ const messagePassword = container.querySelector('#messagePassword');
     const email = emailLogin.value;
     const password = passwordLogin.value;
   
-   const signIn =  signInWithEmailAndPassword(auth, email, password)
+  signInWithEmailAndPassword(auth, email, password)
       .then((user) => {
         localStorage.setItem("user",JSON.stringify(user.user))
         onNavigate("/home");

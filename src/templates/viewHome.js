@@ -110,11 +110,8 @@ getOnDatas((post) =>{
                 <div class="header2">
                     <div class="date">${contpost.date.toDate().toLocaleDateString('es-es', options)}</div>
                     <div class="tools">
-                        <button id="btneditdelete" class="btneditdelete"><img src="./img/tres-puntos.png" alt=""></button>
-                        <ul class="listadebotones">
-                            <li><img src="img/delete.png" class="btn-delete"  data-id="${element.id}"></li>
-                            <li><img src="img/editar.png" class="btn-edit" data-id="${element.id}"></li>
-                        </ul>
+                        <img src="img/delete.png" class="btn-delete"  data-id="${element.id}">
+                        <img src="img/editar.png" class="btn-edit" data-id="${element.id}">
                     </div>
                 </div>
             </div>
@@ -160,26 +157,15 @@ getOnDatas((post) =>{
 
      
 // -------------------------  boton 3 puntos
-//   const btneditdelete = list.querySelectorAll(".btneditdelete");
-//   const listadebotones = list.querySelectorAll(".listadebotones");
+//   const btneditdelete = list.querySelector(".btneditdelete");
+//   const listadebotones = list.querySelector(".listadebotones");
   
-//   btneditdelete.forEach(btn => {
-//         btn.addEventListener('click',() => {
+  
+//         btneditdelete.addEventListener('click',() => {
 //         listadebotones.classList.toggle('mostrar')
-//   })
-//   })
-
-  const btneditdelete = list.querySelector(".btneditdelete");
-  const listadebotones = list.querySelector(".listadebotones");
-  
-  
-        btneditdelete.addEventListener('click',() => {
-        listadebotones.classList.toggle('mostrar')
-        })
-
+//         })
 
   
-
 // --------------------------------delete
 // // data.id(id puede ser sustituido por cualquier otro nombre)es codigo estandar de html/ 
 // significa que se guardara datos dentro de ese boton/ es como crear una variable dentro de html
@@ -232,8 +218,6 @@ btnLike.forEach(btn => {
 
 
 
-
-
 });
 
 
@@ -242,7 +226,7 @@ getDatasUser()
   // console.log(users)
  
   const user = JSON.parse(localStorage.getItem("user"));
-  console.log(user)
+//   console.log(user)
   perfil.innerHTML="";
   saludo.innerHTML="";
 
@@ -252,7 +236,7 @@ getDatasUser()
     
 
       if(doc.data().uid === user.uid){
-        console.log(doc.data());
+        // console.log(doc.data());
           perfil.innerHTML += 
       `<h2>Perfil</h2>
       <div class="imgUsuario">
@@ -289,6 +273,7 @@ getDatasUser()
 //-------------------------cerrar sesión
 btnCerrarSesion.addEventListener("click", async() => {
     await logout();
+    localStorage.removeItem("user")
     console.log("logout")
     onNavigate("/")
 })
@@ -299,3 +284,5 @@ btnCerrarSesion.addEventListener("click", async() => {
     return container;
 }
 
+{/* <button id="btneditdelete" class="btneditdelete"><img src="./img/tres-puntos.png" alt=""></button>
+<ul class="listadebotones"> */}

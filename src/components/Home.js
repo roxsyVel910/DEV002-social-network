@@ -11,7 +11,8 @@ export const saveDatasPost = (post) => addDoc(collection(db, 'post'), {
   uid: auth.currentUser.uid,
   date: Timestamp.fromDate(new Date()),
   post:  post,
-  likes: []
+  likes: [],
+  likesUser: []
 });
 
 

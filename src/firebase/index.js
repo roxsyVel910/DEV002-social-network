@@ -25,5 +25,6 @@ const app = initializeApp(firebaseConfig);
  const auth = getAuth(app);
 
  export{createUserWithEmailAndPassword,auth, onAuthStateChanged,signOut,
-    getFirestore,collection,  addDoc, getDocs, onSnapshot,doc, deleteDoc, orderBy, Timestamp,getDoc, query, updateDoc, updateProfile }
+    getFirestore,collection,  addDoc, getDocs, onSnapshot, doc, deleteDoc, orderBy, Timestamp,getDoc, 
+    query, updateDoc, updateProfile, arrayUnion, arrayRemove  }
 

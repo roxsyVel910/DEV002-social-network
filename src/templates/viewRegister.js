@@ -95,7 +95,6 @@ iniciarSesion.addEventListener('click', () => onNavigate("/login"))
   });
   
 ////////////////////////////////////////////////////////
-  
   nameRegister.addEventListener("input", () => {
    if (nameRegister.value !== "") {
      messageName.innerHTML = "";

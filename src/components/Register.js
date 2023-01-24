@@ -8,8 +8,7 @@ export const registerComponents = async (email,password, displayName) => {
             return result
          })
          
-    } catch(error){
-        // throw 
+    } catch(error){ 
         // console.log(error.message)
         // identificardor unico para el error
         console.log(error)
