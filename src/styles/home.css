@@ -321,7 +321,7 @@
 
 }
 
-.DivLikes, .DivComment{
+.divLikes, .DivComment{
     width: 14%;
     display: flex;
     justify-content: space-around;

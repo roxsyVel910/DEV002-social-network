@@ -1,4 +1,3 @@
-
 import { registerComponents } from "../components/Register.js";
 import { onNavigate } from "../main.js";
 import { saveDatasUser } from "../components/Home.js";
@@ -62,7 +61,7 @@ iniciarSesion.addEventListener('click', () => onNavigate("/login"))
   const email = emailRegister.value
   const password = passwordRegister.value
   
-  registerComponents(email, password)
+  registerComponents(email, password, nameRegister.value)
     .then((user) => {
       // const user = authFirebase.user
       // console.log(user);
@@ -84,6 +83,8 @@ iniciarSesion.addEventListener('click', () => onNavigate("/login"))
         const userCredential = user.user
         localStorage.setItem("user",JSON.stringify(userCredential))
         saveDatasUser(nameRegister.value, emailRegister.value, user.user.uid);
+    
+        
         // console.log(saveDatasUser);
         console.log(userCredential);
         onNavigate("/home");
@@ -91,10 +92,8 @@ iniciarSesion.addEventListener('click', () => onNavigate("/login"))
 
   })
   });
+  
 ////////////////////////////////////////////////////////
-  
-
-  
   nameRegister.addEventListener("input", () => {
    if (nameRegister.value !== "") {
      messageName.innerHTML = "";
@@ -126,5 +125,3 @@ iniciarSesion.addEventListener('click', () => onNavigate("/login"))
   return container;
   
 }
- 
- 
