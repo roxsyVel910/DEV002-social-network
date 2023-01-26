@@ -3,7 +3,7 @@ import { auth, createUserWithEmailAndPassword, updateProfile} from "../firebase/
 export const registerComponents = async (email,password, displayName) => {
     try {
          return await createUserWithEmailAndPassword(auth,email,password).then((result) => {
-            console.log(displayName)
+            // console.log(displayName)
             updateProfile(auth.currentUser, { displayName })
             return result
          })

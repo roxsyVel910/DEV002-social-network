@@ -17,7 +17,6 @@ const routes = {
 
 // console.log("ubicacion",window.location.pathname)
 
-
 export const onNavigate = (pathname) => {
     window.history.pushState(
         {state:pathname},

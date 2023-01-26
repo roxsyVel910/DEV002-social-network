@@ -1,8 +1,8 @@
 import { auth } from "../firebase/index.js";
-import { signInWithEmailAndPassword, GoogleAuthProvider, signInWithPopup } from "https://www.gstatic.com/firebasejs/9.15.0/firebase-auth.js"
+import { GoogleAuthProvider, signInWithPopup } from "https://www.gstatic.com/firebasejs/9.15.0/firebase-auth.js"
 import { onNavigate } from "../main.js";
 import { saveDatasUser } from "../components/Home.js";
-
+import { loginWithEmailAndPassword } from "../components/Login.js"
 
 export const login = () => {
     const container = document.createElement('div');
@@ -55,30 +55,23 @@ const messagePassword = container.querySelector('#messagePassword');
     const email = emailLogin.value;
     const password = passwordLogin.value;
   
-  signInWithEmailAndPassword(auth, email, password)
-      .then((user) => {
-        localStorage.setItem("user",JSON.stringify(user.user))
-        onNavigate("/home");
-      })
-      .catch((error) => {
-        console.log("errors",error.message)
-      // identificardor unico para el error
-      console.log(error.code)
-
-      //messageEmail.innerHTML = getErrorMessage(error)
-
-        // Mostrar mensaje de error al usuario o realizar alguna otra acción
-        if(error.code === "auth/invalid-email"){
-            messageEmail.innerHTML = "correo inválido"
-        } else if (error.code === "auth/user-not-found"){
-            messageEmail.innerHTML = "no se ha registrado"
-        } else if (error.code === "auth/wrong-password"){
-            messagePassword.innerHTML = "contraseña incorrecta"
-        }else if (error.code === "auth/user-disabled"){
-            messageEmail.innerHTML = "suarioinhabilitado"
-        } else if (error.code){
-             alert('algo salio mal')
-        }
+    loginWithEmailAndPassword(email, password)
+    .then((user) => {
+ // Mostrar mensaje de error al usuario o realizar alguna otra acción
+      if (user === "error1L") {
+        messageEmail.innerHTML = "correo inválido";
+      } else if (user === "error2L") {
+        messageEmail.innerHTML = "no se ha registrado";
+      } else if (user === "error3L") {
+        messagePassword.innerHTML = "contraseña incorrecta";
+      } else if (user === "error4L") {
+        alert("algo salio mal");
+      } else {
+          const logincredential=user.user
+          localStorage.setItem("user", JSON.stringify(logincredential))
+          onNavigate("/home");
+      }
+        
         
       });
       
