@@ -16,7 +16,7 @@ jest.mock('../src/firebase/index.js', () => {
         throw new Error('ERROR')
       }
 
-      Promise.resolve({ user: "admin"})
+      return Promise.resolve({ user: "admin"})
       
     })
   }
@@ -48,10 +48,3 @@ describe('test para registrarse', () => {
 
 // se puede utilizar to equal ( new Error('ERROR'))
 
-// import { myFunction } from '../src/lib/index';
-
-// describe('myFunction', () => {
-//   it('debería ser una función', () => {
-//     expect(typeof myFunction).toBe('function');
-//   });
-// });

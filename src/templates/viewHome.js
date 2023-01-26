@@ -1,6 +1,6 @@
 import { onNavigate } from "../main.js"; 
-import { logout, viewUser } from "../components/logout.js";
-import { saveDatasPost, getDatasPost, getOnDatas, deleteData, getData, updateData, getDatasUser} from "../components/Home.js";
+import { logout } from "../components/logout.js";
+import { saveDatasPost, getDatasPost, getOnDatas, deleteData, getData, updateData, getDatasUser, addLike, removeLike} from "../components/Home.js";
 
 
 export const home = () => {
@@ -85,18 +85,18 @@ postArea.addEventListener("keyup", () => {
     messagePost.innerHTML = "";
   })
 
- 
+// const user = JSON.parse(localStorage.getItem("user")); 
 // --------mostrar los post de manera dinámica
 // post es el objeto de los post, el data es el objeto de cada post y el .post(propiedad) es lo que esta en el value
 getOnDatas((post) =>{
     // console.log(post);
   list.innerHTML=""
-   const user = JSON.parse(localStorage.getItem("user"));
+  const user = JSON.parse(localStorage.getItem("user"));
 
   post.forEach((element) => {
     
     const contpost=element.data();
-    // console.log(contpost)
+    //  console.log(contpost)
 
     if(user.uid === contpost.uid){
         list.innerHTML += `
@@ -104,11 +104,10 @@ getOnDatas((post) =>{
         <div class="containPost">
             <div class="headerPost">
                 <div class="user">
-                    <img src="./img/usuario.png" alt="" /> 
-                    <span>${contpost.user}</span>
+                        <img src="./img/usuario.png" alt=""/> 
+                        <span>${contpost.user}</span>
                 </div>
                 <div class="header2">
-                    <div class="date">${contpost.date.toDate().toLocaleDateString('es-es', options)}</div>
                     <div class="tools">
                         <img src="img/delete.png" class="btn-delete"  data-id="${element.id}">
                         <img src="img/editar.png" class="btn-edit" data-id="${element.id}">
@@ -121,9 +120,10 @@ getOnDatas((post) =>{
         </div>
         <div class = "likesandCommet">
             <div class="DivLikes">
-                <img class="btnLike" src= "img/LikepawWhite.png "/>
-                <p><span class="CountLikes"></span>Likes</p>
+                <img class="btnLike CountLikes" data-id='${element.id}' src= "img/LikepawWhite.png "/>
+                <span>${contpost.likes}</span>
             </div>
+            <div class="date">${contpost.date.toDate().toLocaleDateString('es-es', options)}</div>
         </div>
     </div>`
     } else {
@@ -134,8 +134,7 @@ getOnDatas((post) =>{
                 <div class="user">
                     <img src="./img/usuario.png" alt="" /> 
                     <span> ${contpost.user} </span>
-                </div>
-                <div class="date">${contpost.date.toDate().toLocaleDateString('es-es', options)}</div>
+                </div>   
             </div>
             <div class="TextPost">
                 <p class="newPost">${contpost.post} </p>
@@ -143,9 +142,10 @@ getOnDatas((post) =>{
         </div>
         <div class = "likesandCommet">
             <div class="DivLikes">
-                <img class="btnLike" src= "img/LikepawWhite.png "/>
-                <p class="CountLikes"><span></span>Likes</p>
+                <img class="btnLike CountLikes" data-id='${element.id}' src= "img/LikepawWhite.png "/>
+                <span>${contpost.likes}</span>
             </div>
+            <div class="date">${contpost.date.toDate().toLocaleDateString('es-es', options)}</div>
         </div>
     </div>`
 
@@ -155,31 +155,59 @@ getOnDatas((post) =>{
       
   });
 
-     
-// -------------------------  boton 3 puntos
-//   const btneditdelete = list.querySelector(".btneditdelete");
-//   const listadebotones = list.querySelector(".listadebotones");
-  
-  
-//         btneditdelete.addEventListener('click',() => {
-//         listadebotones.classList.toggle('mostrar')
-//         })
+// ---------------------------- array likes
+const btnLike = list.querySelectorAll(".btnLike");
+// const CountLikes = list.querySelectorAll(".CountLikes");
 
-  
+
+btnLike.forEach(btn => {
+
+    // const likeUser = element.data().likerUSer;
+    // console.log(likeUser);
+    const user = JSON.parse(localStorage.getItem("user")); 
+    btn.addEventListener('click', (e) => {
+        const useruid = user.uid;
+        const btnlikeid = e.target.dataset.id;
+    
+        console.log('id like',btnlikeid)
+        console.log('uid',useruid)
+        getData(btnlikeid)
+        .then((doc) => {
+            console.log("doc then",doc.data())
+            const docData = doc.data()
+            if(docData.likesUser.includes(useruid)){
+                const resta = docData.likes - 1;
+                removeLike(btnlikeid, resta, useruid);
+                
+            } else {
+               const suma = docData.likes + 1;
+               addLike(btnlikeid, suma, useruid);
+              
+            }
+        })
+
+        })
+
+    })
+        
 // --------------------------------delete
 // // data.id(id puede ser sustituido por cualquier otro nombre)es codigo estandar de html/ 
 // significa que se guardara datos dentro de ese boton/ es como crear una variable dentro de html
-
-    const btndelete = list.querySelectorAll('.btn-delete');
-    // console.log(btndelete)
-    btndelete.forEach(btn => {
-    // console.log(btn)
-    // target es una propiedad del objeto del evento - dataset es una propiedad de target, la cual tiene el ID del boton
-        btn.addEventListener('click', ({target:{dataset}}) => {
-            deleteData(dataset.id);
-            // console.log('delete', dataset.id);
-        })
+const btndelete = list.querySelectorAll('.btn-delete');
+btndelete.forEach(btn => {
+    btn.addEventListener("click", e => {
+        const id = e.target.dataset.id;
+        const confirmDelete = confirm("¿Seguro que deseas eliminar?");
+        if (confirmDelete) {
+            if (confirmDelete) {
+                // Llamada a la función para eliminar el dato con el ID obtenido
+                deleteData(id);
+            }
+        }
     });
+});
+    // // target es una propiedad del objeto del evento - 
+    //dataset es una propiedad de target, la cual tiene el ID del boton    
 
 // ------------------------------editar
     const btneditar = list.querySelectorAll('.btn-edit');
@@ -204,21 +232,11 @@ getOnDatas((post) =>{
               });
             });
         
-            
-// ---------------------------- array likes
-const btnLike = list.querySelectorAll(".btnLike");
-const CountLikes = list.querySelectorAll(".CountLikes");
-
-btnLike.forEach(btn => {
-    btn.addEventListener('click', () => {
-        console.log(click)
-    })
-})
-
-
-
-
 });
+
+
+
+
 
 
 getDatasUser() 

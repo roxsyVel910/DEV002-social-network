@@ -27,7 +27,7 @@ export const register = () => {
             <div id="messageEmail"></div>
             <input type="password" id="passwordRegister" placeholder="Contraseña" autocomplete = "off">
             <div id="messagePassword"></div>
-            <input type="password" id="passwordConfirm" placeholder="Confirme su contraseña">
+            <input type="password" id="passwordConfirm" placeholder="Confirme su contraseña" required>
             <div id="messagePasswordConfirm"></div>
             <button type="submit" id="register">REGISTRARSE</button>
         </form>
