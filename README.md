@@ -3,14 +3,13 @@
 
 ## Índice
 
-* [1. Preámbulo](#1-preámbulo)
-* [2. Resumen del proyecto](#2-resumen-del-proyecto)
-* [3. Objetivos de aprendizaje](#3-objetivos-de-aprendizaje)
-* [4. Consideraciones generales](#4-consideraciones-generales)
-* [5. Criterios de aceptación mínimos del proyecto](#5-criterios-de-aceptación-mínimos-del-proyecto)
-* [6. Hacker edition](#6-hacker-edition)
+* [1. Preámbulo](#1-Tema)
+* [2. Introducción](#2-Introducción)
+* [3. Definición del producto](#3-Definición-del-producto)
+* [4. Investigación UX](#4-Investigación-UX)
+* [5. Diseño de interfaz de usuario UI](#5-Diseño-de-interfaz-de-usuario-UI)
+* [6. Mocks y Test](#6Mocks-y-test)
 * [7. Entrega](#7-entrega)
-* [8. Pistas, tips y lecturas complementarias](#8-pistas-tips-y-lecturas-complementarias)
 
 ## 1. Preámbulo
 

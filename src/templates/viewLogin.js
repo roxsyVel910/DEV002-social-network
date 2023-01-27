@@ -58,23 +58,35 @@ const messagePassword = container.querySelector('#messagePassword');
     loginWithEmailAndPassword(email, password)
     .then((user) => {
  // Mostrar mensaje de error al usuario o realizar alguna otra acción
-      if (user === "error1L") {
-        messageEmail.innerHTML = "correo inválido";
-      } else if (user === "error2L") {
-        messageEmail.innerHTML = "no se ha registrado";
-      } else if (user === "error3L") {
-        messagePassword.innerHTML = "contraseña incorrecta";
-      } else if (user === "error4L") {
-        alert("algo salio mal");
-      } else {
+      // if (user === "error1L") {
+      //   messageEmail.innerHTML = "correo inválido";
+      // } else if (user === "error2L") {
+      //   messageEmail.innerHTML = "no se ha registrado";
+      // } else if (user === "error3L") {
+      //   messagePassword.innerHTML = "contraseña incorrecta";
+      // } else if (user === "error4L") {
+      //   alert("algo salio mal");
+      // } else {
           const logincredential=user.user
           localStorage.setItem("user", JSON.stringify(logincredential))
           onNavigate("/home");
-      }
+      // }
         
         
-      });
-      
+      })
+      .catch((error) => {
+        console.log(error.code)
+
+        if (error.code === "auth/invalid-email") {
+          messageEmail.innerHTML = "correo inválido"
+        } else if (error.code  === "auth/user-not-found") {
+          messageEmail.innerHTML = "el correo no esta registrado"
+        } else if (error.code  === "auth/wrong-password") {
+          messagePassword.innerHTML = "contraseña incorrecta"
+        } else  {
+          alert('algo salio mal')
+        }
+      })
     });
 
     emailLogin.addEventListener("keyup", () => {

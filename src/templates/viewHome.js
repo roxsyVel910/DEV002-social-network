@@ -89,7 +89,7 @@ postArea.addEventListener("keyup", () => {
 // --------mostrar los post de manera dinámica
 // post es el objeto de los post, el data es el objeto de cada post y el .post(propiedad) es lo que esta en el value
 getOnDatas((post) =>{
-    // console.log(post);
+     console.log(post);
   list.innerHTML=""
   const user = JSON.parse(localStorage.getItem("user"));
 
@@ -268,19 +268,7 @@ getDatasUser()
       // imprimir desde aqui el nombre del usuario que esta en el post
 
       } 
-    //   else {
-    //       perfil.innerHTML += 
-    //   `<h2>Perfil</h2>
-    //   <div class="imgUsuario">
-    //   <img src='./img/user.png'alt=""></div>
-    //   <p class="pusuario">Usuario</p>
-    //   <p class="displayname">${user.displayName}</p>
-    //   <p class="pcorreo">Correo</p>
-    //   <p class="emailUser">${user.email}</p>`
 
-    //   saludo.innerHTML += `<h2>HOLA!, ${user.displayName}</h2>`
-
-    //   }
 
   })
   
