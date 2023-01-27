@@ -11,8 +11,11 @@ export const login = () => {
  const view = ` 
     <div class="contentHome">
         <img class="imghome" src="../img/imgportada.jpg" alt="imagen de portada">
-        <p>DoggoS es una app para dueños de perros, en el que podras encontrar y compartir recomendaciones sobre el cuidado de
-        tus engreidos. Te invitamos a unirte y ser parte de esta gran comunidad doglover.
+        <p>¿Primera vez con un perruno en casa? comienza con la patita derecha, ten paciencia y buen humor.
+        No importa la edad que tengas, seas un niño o un adulto la llegada de un nuevo integrante a la familia siempre es emocionante
+         y más si se trata de un cachorro. Si es tu primera vez, las emociones se pueden multiplicar igual que las dudas frente a lo que 
+         debes hacer para ser un cuidador responsable y amoroso. DoggoS es una app donde  podras encontrar y compartir recomendaciones con 
+         personas que estan pasando o pasaron por tu misma etapa. Te invitamos a unirte y ser parte de esta gran comunidad doglover.
         ¿Qué esperas? ¡No te pierdas más novedades!</p>
     </div> 
     <div class="sectionForm">
